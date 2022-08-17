@@ -4,12 +4,12 @@
 #include <QWidget>
 #include <QTcpSocket>
 #include <QHostAddress>
-#include "Spline/ExternalPathCoordinateSet.h"
 #include <QDebug>
 
 #include "AGVMessage/AgvExternalPara.h"
-#include "main.h"
+#include "Spline/ExternalPathCoordinateSet.h"
 #include "Math/UserMatrix.h"
+#include "main.h"
 
 //#define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]";
 

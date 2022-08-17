@@ -8,11 +8,11 @@
 //#include <QDebug>
 #include "AGVMessage/AGV_Struct.h"
 #include "AGVMessage/AGV_Message.h"
+#include "AGVMessage/AgvExternalPara.h"
 
 #include "Spline/ExternalPathCoordinateSet.h"
-#include "AGVMessage/AgvExternalPara.h"
-#include "main.h"
 #include "Math/UserMatrix.h"
+#include "main.h"
 
 
 #define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]"
@@ -33,8 +33,6 @@ private slots:
     void on_buttonSend_clicked();
 
     void on_buttonClose_clicked();
-
-
 
 private:
     Ui::ServerWidget *ui;
