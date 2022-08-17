@@ -4,7 +4,5 @@
 #include "AGVMessage/AgvExternalPara.h"
 
 extern QSharedPointer<AGVExternalPara> g_AGV_ptr;
-static int abc_test;
-
 
 #endif // MAIN_H
