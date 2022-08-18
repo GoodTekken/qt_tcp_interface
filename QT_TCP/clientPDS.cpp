@@ -1,9 +1,9 @@
-#include "clientwidget.h"
-#include "ui_clientwidget.h"
+#include "clientPDS.h"
+#include "ui_clientPDS.h"
 
-ClientWidget::ClientWidget(QWidget *parent) :
+ClientPDS::ClientPDS(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ClientWidget)
+    ui(new Ui::ClientPDS)
 {
     ui->setupUi(this);
 
@@ -34,12 +34,12 @@ ClientWidget::ClientWidget(QWidget *parent) :
             );
 }
 
-ClientWidget::~ClientWidget()
+ClientPDS::~ClientPDS()
 {
     delete ui;
 }
 
-void ClientWidget::on_pushButtonConnect_clicked()
+void ClientPDS::on_pushButtonConnect_clicked()
 {
     QString ip = ui->lineEditIP->text();
     quint16 port = ui->lineEditPort->text().toUInt();
@@ -48,7 +48,7 @@ void ClientWidget::on_pushButtonConnect_clicked()
     tcpSocket->connectToHost(QHostAddress(ip),port);
 }
 
-void ClientWidget::on_pushButtonSend_clicked()
+void ClientPDS::on_pushButtonSend_clicked()
 {
 //    QString str = ui->textEditWrite->toPlainText();
 //    tcpSocket->write(str.toUtf8().data());
@@ -69,13 +69,13 @@ void ClientWidget::on_pushButtonSend_clicked()
 //    g_AGV_ptr->RackPosition = CoordinateClass(-middlePoint.y(),middlePoint.x(),0,a.angle);
 }
 
-void ClientWidget::on_pushButtonClose_clicked()
+void ClientPDS::on_pushButtonClose_clicked()
 {
     tcpSocket->disconnectFromHost();
     tcpSocket->close();
 }
 
-void ClientWidget::on_pushButtonEnter_clicked()
+void ClientPDS::on_pushButtonEnter_clicked()
 {
     Matrix<double, 4, 4> temp1 = MatrixObject(g_AGV_ptr->AgvReferencePointPosition)*MatrixObject(g_AGV_ptr->CameraPosition);
     Matrix<double, 4, 4> temp2 = temp1*MatrixObject(g_AGV_ptr->RackPosition);
@@ -100,7 +100,7 @@ void ClientWidget::on_pushButtonEnter_clicked()
 
 }
 
-void ClientWidget::on_pushButtonLeave_clicked()
+void ClientPDS::on_pushButtonLeave_clicked()
 {
     //0, 0, 18000, 1500, 300, 18000
     //ExternalPathCoordinateSet Agv_Coordinate(53907, 22995, 9000, 53907, 20315, 9000);

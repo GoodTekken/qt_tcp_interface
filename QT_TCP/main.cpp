@@ -6,6 +6,7 @@
 #include "main.h"
 #include "serverwidget.h"
 #include "clientwidget.h"
+#include "clientPDS.h"
 #include "Math/UserMatrix.h"
 
 QSharedPointer<AGVExternalPara> g_AGV_ptr = AGVExternalPara::getIntance();
@@ -18,6 +19,9 @@ int main(int argc, char *argv[])
 
     ClientWidget client_weight;
     client_weight.show();
+
+    ClientPDS client_PDS;
+    client_PDS.show();
 
     return a.exec();
 }

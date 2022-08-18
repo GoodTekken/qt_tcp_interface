@@ -27,6 +27,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++14
 
 SOURCES += \
+    Function/function.cpp \
+    clientPDS.cpp \
         main.cpp \
         serverwidget.cpp \
     clientwidget.cpp \
@@ -39,6 +41,8 @@ SOURCES += \
     Math/UserMatrix.cpp
 
 HEADERS += \
+    Function/function.h \
+    clientPDS.h \
         serverwidget.h \
     clientwidget.h \
     AGVMessage/AGV_Struct.h \
@@ -52,6 +56,7 @@ HEADERS += \
     main.h
 
 FORMS += \
+    clientPDS.ui \
         serverwidget.ui \
     clientwidget.ui
 
@@ -85,6 +90,9 @@ LIBS += /usr/lib/x86_64-linux-gnu/libvtk*.so
 LIBS += /usr/lib/x86_64-linux-gnu/libboost*
 
 LIBS += /usr/lib/x86_64-linux-gnu/libpthread*
+
+DISTFILES += \
+    record
 
 
 
