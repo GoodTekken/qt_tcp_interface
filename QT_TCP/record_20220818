@@ -1,4 +1,3 @@
-20220818
 1,new a clientPDS.ui in the Forms,PDS is short for Pallet Detect System.
 ----|
     |_clientPDS.ui
@@ -14,3 +13,11 @@
 ----|
     |_pdsProtocol.h
     |_pdsProtocol.cpp
+
+
+4,add pdsStruct.h to PDS_protocol directory
+----|
+    |_...
+    |_pdsStruct.h
+
+
