@@ -45,6 +45,7 @@ HEADERS += \
     Function/function.h \
     PDS_protocol/pdsErrorCode.h \
     PDS_protocol/pdsProtocol.h \
+    PDS_protocol/pdsStruct.h \
     clientPDS.h \
         serverwidget.h \
     clientwidget.h \
@@ -95,7 +96,7 @@ LIBS += /usr/lib/x86_64-linux-gnu/libboost*
 LIBS += /usr/lib/x86_64-linux-gnu/libpthread*
 
 DISTFILES += \
-    record
+    record_20220818
 
 
 
