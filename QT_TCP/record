@@ -1,6 +1,16 @@
 20220818
-1,New a clientPDS.ui in the Forms,PDS is short for Pallet Detect System.
+1,new a clientPDS.ui in the Forms,PDS is short for Pallet Detect System.
 ----|
-    |-clientPDS.ui
-    |-clientPDS.h
-    |-clientPDS.cpp
+    |_clientPDS.ui
+    |_clientPDS.h
+    |_clientPDS.cpp
+
+2,create a function directory.
+----|
+    |_function.h
+    |_function.cpp
+
+3,create a PDS_protocol directory
+----|
+    |_pdsProtocol.h
+    |_pdsProtocol.cpp

@@ -28,6 +28,7 @@ CONFIG += c++14
 
 SOURCES += \
     Function/function.cpp \
+    PDS_protocol/pdsProtocol.cpp \
     clientPDS.cpp \
         main.cpp \
         serverwidget.cpp \
@@ -42,6 +43,8 @@ SOURCES += \
 
 HEADERS += \
     Function/function.h \
+    PDS_protocol/pdsErrorCode.h \
+    PDS_protocol/pdsProtocol.h \
     clientPDS.h \
         serverwidget.h \
     clientwidget.h \
