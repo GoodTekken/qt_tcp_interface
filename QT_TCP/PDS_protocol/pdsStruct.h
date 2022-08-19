@@ -1,12 +1,9 @@
 #ifndef PDSSTRUCT_H
 #define PDSSTRUCT_H
 #include <cstdint>
-<<<<<<< HEAD
-#include<QByteArray>
-=======
 
 #pragma pack(1)     //设置结构体为1字节对齐
->>>>>>> 78ebb0cbbff571e6e64c151d822248aaabf1fcb2
+
 typedef struct
 {
                                    //total: 25 bytes
@@ -18,7 +15,7 @@ typedef struct
     uint8_t  filterMask;           //1 byte  (bit0 = stray light filter, bit1 = fast flying pixel filter, bit2 = stretch wrap filter)
     char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
 }getPalletRequest;
-#pragma pack()		//结束结构体对齐设置
+
 
 typedef struct
 {
@@ -217,11 +214,93 @@ typedef  struct
     int32_t errorCode;             //4 byte  (value: Unless the return code is PDS_NO_ERRORS, the caller should not attempt the pick)
     uint32_t len;                  //4 byte  (value: 6+payload)
     //config array todo
-    void* payload;                 //8 byte  (pointer to )
+    void* payload;                 //8 byte  (pointer to data get from socket)
     char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
 }getConfigResponse;
 
+typedef struct
+{
+    //total: 18 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 8,The command id of the request being sent)
+    uint32_t argsLen;              //4 byte  (value: 0,The size in bytes of the arguments sent to the command)
+    void*    configs;              //8 byte  (pointer to configs,which should be included in a class)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}setConfigRequest;
+
+typedef  struct
+{
+    //total 30 bytes
+   char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+   uint32_t commandID;            //4 byte  (value: 8,The command id of the request being sent)
+   int32_t errorCode;             //4 byte  (value: Unless the return code is PDS_NO_ERRORS, the caller should not attempt the pick)
+   uint32_t len;                  //4 byte  (value: 6)
+   char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}setConfigResponse;
 
 
+typedef struct
+{
+    //total: 18 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 9,The command id of the request being sent)
+    uint32_t argsLen;              //4 byte  (value: 0,The size in bytes of the arguments sent to the command)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}saveConfigRequest;
 
+typedef  struct
+{
+    //total 30 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 9,The command id of the request being sent)
+    int32_t errorCode;             //4 byte  (value: Unless the return code is PDS_NO_ERRORS, the caller should not attempt the pick)
+    uint32_t len;                  //4 byte  (value: 6)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}saveConfigResponse;
+
+typedef struct
+{
+    //total: 18 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 10,The command id of the request being sent)
+    uint32_t argsLen;              //4 byte  (value: 0,The size in bytes of the arguments sent to the command)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}resetConfigRequest;
+
+typedef  struct
+{
+    //total 30 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 10,The command id of the request being sent)
+    int32_t errorCode;             //4 byte  (value: Unless the return code is PDS_NO_ERRORS, the caller should not attempt the pick)
+    uint32_t len;                  //4 byte  (value: 6)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}resetConfigResponse;
+
+typedef struct
+{
+    //total: 42 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 11,The command id of the request being sent)
+    uint32_t argsLen;              //4 byte  (value: 24,The size in bytes of the arguments sent to the command)
+    float x;                       //4 byte  (X position of the camera (meters,user-defined frame))
+    float y;                       //4 byte  (Y position of the camera (meters,user-defined frame))
+    float z;                       //4 byte  (Z position of the camera (meters,user-defined frame))
+    float roll;                    //4 byte Rotation of the camera about the x axis (radians, user-defined frame)
+    float pitch;                   //4 byte Rotation of the camera about the y axis (radians, user-defined frame)
+    float yaw;                     //4 byte Rotation of the camera about the z axis (radians, user-defined frame)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}saveExtrinsicsRequest;
+
+typedef  struct
+{
+    //total 30 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 11,The command id of the request being sent)
+    int32_t errorCode;             //4 byte  (value: Unless the return code is PDS_NO_ERRORS, the caller should not attempt the pick)
+    uint32_t len;                  //4 byte  (value: 6)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}saveExtrinsicsResponse;
+
+#pragma pack()		//结束结构体对齐设置
 #endif // PDSSTRUCT_H
