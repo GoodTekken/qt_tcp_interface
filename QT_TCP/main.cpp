@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
     ServerWidget server_weight;
     server_weight.show();
 
-    ClientWidget client_weight;
-    client_weight.show();
+//    ClientWidget client_weight;
+//    client_weight.show();
 
     ClientPDS client_PDS;
     client_PDS.show();

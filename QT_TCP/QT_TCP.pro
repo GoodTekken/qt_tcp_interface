@@ -28,6 +28,7 @@ CONFIG += c++14
 
 SOURCES += \
     Function/function.cpp \
+    PDS_protocol/PalletRequestClass.cpp \
     PDS_protocol/pdsProtocol.cpp \
     clientPDS.cpp \
         main.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
 
 HEADERS += \
     Function/function.h \
+    PDS_protocol/PalletRequestClass.h \
     PDS_protocol/pdsErrorCode.h \
     PDS_protocol/pdsProtocol.h \
     PDS_protocol/pdsStruct.h \
@@ -96,7 +98,8 @@ LIBS += /usr/lib/x86_64-linux-gnu/libboost*
 LIBS += /usr/lib/x86_64-linux-gnu/libpthread*
 
 DISTFILES += \
-    record_20220818
+    record_20220818 \
+    record_20220819
 
 
 
