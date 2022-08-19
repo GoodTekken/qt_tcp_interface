@@ -55,7 +55,7 @@ typedef struct
 }getPalletResponse_failure;
 
 
-<<<<<<< HEAD
+
 typedef struct 
 {
     //total 22 bytes
@@ -223,6 +223,5 @@ typedef  struct
 
 
 
-=======
->>>>>>> 78ebb0cbbff571e6e64c151d822248aaabf1fcb2
+
 #endif // PDSSTRUCT_H
