@@ -45,7 +45,7 @@ void ClientPDS::on_pushButtonSend_clicked()
 {
 
     QByteArray array;
-    uint32_t commandID = 1;
+    uint32_t commandID = 3;
     uint16_t palletType = 2;
     PalletRequestClass palletRequest(commandID,palletType);
     array = palletRequest.ToArray();

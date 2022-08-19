@@ -33,3 +33,80 @@ QByteArray convertUInt16ToByte(uint16_t data)
     array.append(data & 0xFF00);
     return array;
 }
+
+//小端读取
+template <typename T> // T must be integer type
+T to_little_endian(T x)
+{
+    size_t n = sizeof(T) / sizeof(char); // 2,4,8
+
+    T res;
+    char* p = (char*)&res;
+    T mask = static_cast<T>(0xFF);
+
+    for (size_t i = 0; i < n; i++)
+    {
+        int offset = 8 * i;
+        p[i] = (x & (mask << offset)) >> offset;
+    }
+
+    return res;
+}
+
+//大端读取
+template <typename T> // T must be integer type
+T to_large_endian(T x)
+{
+    size_t n = sizeof(T) / sizeof(char); // 2,4,8
+
+    T res;
+    char* p = (char*)&res;
+    T mask = static_cast<T>(0xFF);
+
+    for (size_t i = 0; i < n; i++)
+    {
+        int offset = 8 * (n - i - 1);
+        p[i] = (x & (mask << offset)) >> offset;
+    }
+
+    return res;
+}
+
+
+uint16_t swapUInt16(uint16_t value)
+{
+    return ((value & 0x00FF) << 8) |
+           ((value & 0xFF00) >> 8);
+}
+
+uint32_t swapUInt32(uint32_t value)
+{
+    return ((value & 0x000000FF) << 24) |
+           ((value & 0x0000FF00) << 8) |
+           ((value & 0x00FF0000) >> 8) |
+           ((value & 0xFF000000) >> 24);
+}
+
+
+int32_t swapInt32(int32_t value)
+{
+    int a = value;
+    return ((value & 0x000000FF) << 24) |
+           ((value & 0x0000FF00) << 8) |
+           ((value & 0x00FF0000) >> 8) |
+           ((value & 0xFF000000) >> 24);
+}
+
+float Byte2Float(QByteArray byte)
+{
+    float result = 0;
+    int size = byte.size();
+    char* data_char = byte.data();
+    char* p = (char*)&result;
+    for(int index = 0; index < size; index++)
+        {
+        *(p + index) = *(data_char + size - 1 - index);
+        }
+    return result;
+}
+

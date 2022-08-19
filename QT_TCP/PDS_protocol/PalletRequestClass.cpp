@@ -1,5 +1,7 @@
 #include "PDS_protocol/PalletRequestClass.h"
 #include "Function/function.h"
+#include <cstring>
+#include <iostream>
 #include <QDebug>
 
 #define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]"
@@ -35,9 +37,29 @@ PalletRequestClass::PalletRequestClass(uint32_t commandID, uint16_t palletType)
 
 QByteArray PalletRequestClass::ToArray()
 {
+    palletRequestStruct.commandID = swapUInt32(palletRequestStruct.commandID);
+    palletRequestStruct.argsLen = swapUInt32(palletRequestStruct.argsLen);
+    palletRequestStruct.palletType = swapUInt16(palletRequestStruct.palletType);
+    palletRequestStruct.depthHint = swapInt32(palletRequestStruct.depthHint);
+
     QByteArray array;
     array.clear();
-    array.append((char*)&palletRequestStruct,sizeof(palletRequestStruct));
+    unsigned char buf[25];
+    std::memcpy(buf,(char*)&palletRequestStruct,sizeof(palletRequestStruct));
+    for(int i= 0;i<14;i++)
+    {
+        array.append(buf[i]);
+    }
+    array.append(buf[17]);
+    array.append(buf[16]);
+    array.append(buf[15]);
+    array.append(buf[14]);
+    for(int i= 18;i<25;i++)
+    {
+        array.append(buf[i]);
+    }
+
+    //array.append((char*)&palletRequestStruct,sizeof(palletRequestStruct));
     return array;
 }
 void PalletRequestClass::ToString()

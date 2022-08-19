@@ -1,9 +1,8 @@
 #ifndef REQUESTEXTERNALCLASS_H
 #define REQUESTEXTERNALCLASS_H
 
-
 #include <string>
-
+#include "Function/function.h"
 
 class RequestExternalClass
 {
