@@ -10,10 +10,12 @@ PalletRequestClass::PalletRequestClass()
 {
 
 };
+
 PalletRequestClass::~PalletRequestClass()
 {
 
 };
+
 PalletRequestClass::PalletRequestClass(uint32_t commandID, uint16_t palletType)
 {
     palletRequestStruct.startSequnce[0] = 0x73;//73 74 61 72
@@ -24,7 +26,7 @@ PalletRequestClass::PalletRequestClass(uint32_t commandID, uint16_t palletType)
     palletRequestStruct.commandID = commandID;
     palletRequestStruct.argsLen = 7;
     palletRequestStruct.palletType = palletType;
-    palletRequestStruct.depthHint = -1;
+    palletRequestStruct.depthHint = 1.2;
     palletRequestStruct.filterMask = 0;
 
     palletRequestStruct.stopSequence[0] = 0x73;//73 74 6f 70 0d 0a
@@ -58,10 +60,27 @@ QByteArray PalletRequestClass::ToArray()
     {
         array.append(buf[i]);
     }
-
     //array.append((char*)&palletRequestStruct,sizeof(palletRequestStruct));
     return array;
 }
+
+PalletRequestClass::PalletRequestClass(QByteArray array)
+{
+    getPalletRequest *data = (getPalletRequest*)array.data();
+    data->commandID=swapUInt32(data->commandID);
+    data->argsLen=swapUInt32(data->argsLen);
+    data->palletType =swapUInt16(data->palletType);
+
+    QByteArray depthArray;
+    depthArray.append(array[14]);
+    depthArray.append(array[15]);
+    depthArray.append(array[16]);
+    depthArray.append(array[17]);
+//    data->depthHint = Byte2Float(depthArray);//data->depthHint unstable,  can not be used.
+    depthHint = Byte2Float(depthArray);
+    qDebug("%f",data->depthHint);
+}
+
 void PalletRequestClass::ToString()
 {
 

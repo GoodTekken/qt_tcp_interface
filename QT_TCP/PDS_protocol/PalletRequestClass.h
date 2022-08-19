@@ -12,11 +12,12 @@ class PalletRequestClass
 public:
 
     getPalletRequest palletRequestStruct;
+    float depthHint;
 
     PalletRequestClass();     //default: command Id - 1,pallet type - 1
     ~PalletRequestClass();
     PalletRequestClass(uint32_t commandID, uint16_t palletType);
-
+    PalletRequestClass(QByteArray array);  //for receive template
     QByteArray ToArray();
     void ToString();
 };

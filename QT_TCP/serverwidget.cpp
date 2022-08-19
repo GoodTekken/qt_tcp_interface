@@ -1,5 +1,6 @@
 #include "serverwidget.h"
 #include "ui_serverwidget.h"
+#include "PDS_protocol/PalletRequestClass.h"
 
 typedef unsigned char byte;
 
@@ -37,28 +38,11 @@ ServerWidget::ServerWidget(QWidget *parent) :
                             qDebug("%d",count);
                             if(count==25)
                             {
-                                getPalletRequest *data = (getPalletRequest*)array.data();
-                                data->commandID=swapUInt32(data->commandID);
-                                data->argsLen=swapUInt32(data->argsLen);
-                                data->palletType =swapUInt16(data->palletType);
+                                PalletRequestClass palletRequest(array);
 
-                                QByteArray depthArray;
-                                depthArray.append(array[14]);
-                                depthArray.append(array[15]);
-                                depthArray.append(array[16]);
-                                depthArray.append(array[17]);
-
-                                data->depthHint = Byte2Float(depthArray);
-//                                externalPath* ptr = reinterpret_cast<externalPath*>(array.data());
-                                qDebug("commandID:%d",data->commandID);
-                                qDebug("argsLen:%d",data->argsLen);
-                                qDebug("palletType:%d",data->palletType);
-                                qDebug("depthHint:%f",data->depthHint);
-                                qDebug("filterMask:%d",data->filterMask);
-
-                                QString str= "commandID:"+QString::number(swapUInt32(data->commandID)) +
-                                             " palletType:"+QString::number(swapUInt16(data->palletType))+
-                                             " depthHint:"+QString::number(data->depthHint);
+                                QString str= "commandID:"+QString::number(palletRequest.palletRequestStruct.commandID) +
+                                             " palletType:"+QString::number(palletRequest.palletRequestStruct.palletType)+
+                                             " depthHint:"+QString::number(palletRequest.depthHint);
                                 tcpSocket->write(str.toUtf8().data());
                             }
                         }
