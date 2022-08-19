@@ -6,5 +6,5 @@
 2,add function in Function directory
 ----|
     |_...
-    |_PalletRequestClass.cpp
-    |_PalletRequestClass.cpp
+    |_convertUInt32ToByte
+    |_convertUInt16ToByte

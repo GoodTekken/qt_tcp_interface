@@ -19,11 +19,7 @@ ServerWidget::ServerWidget(QWidget *parent) :
 
     setWindowTitle("Server:Port_55556");
 
-    byte* px;
-    externalPath* ptr;
-
-
-    connect(tcpServer,&QTcpServer::newConnection,
+    connect(tcpServer,&QTcpServer::newConnection,this,
             [=]()
             {
                 tcpSocket = tcpServer->nextPendingConnection();
@@ -32,27 +28,12 @@ ServerWidget::ServerWidget(QWidget *parent) :
                 QString temp = QString("[%1:%2]:Connect Successful!").arg(ip).arg(port);
                 ui->textEditRead->setText(temp);
 
-                connect(tcpSocket,&QTcpSocket::readyRead,
+                connect(tcpSocket,&QTcpSocket::readyRead,this,
                         [=]()mutable
                         {
                             QByteArray array = tcpSocket->readAll();
                             ui->textEditRead->append(array.toHex());
-                            QByteArray byte1 = array.toHex();
-                            QByteArray buf = QByteArray::fromHex(byte1);
-                            int leng =buf.count();
-                            char a = buf.at(3);
-
-
                             int count = array.count();
-                            char szText[100];
-                            bool ok;
-                            memset(szText,0,100);
-                            for(int i = 0;i<count;i++)
-                            {
-//                                szText[i]=array.data()[i];
-                                szText[i]=array.at(i);
-                            }
-
                             qDebug("%d",count);
                             if(count==25)
                             {
@@ -63,6 +44,10 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                 qDebug("palletType:%d",data->palletType);
                                 qDebug("depthHint:%f",data->depthHint);
                                 qDebug("filterMask:%d",data->filterMask);
+
+                                QString str= "commandID:"+QString::number(data->commandID) +
+                                             " palletType:"+QString::number(data->palletType);
+                                tcpSocket->write(str.toUtf8().data());
                             }
                         }
                         );
