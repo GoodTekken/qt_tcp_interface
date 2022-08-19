@@ -72,7 +72,6 @@ int Crc16(byte* px, int usLen)
     return (ucCRCHi << 8 | ucCRCLo);
 }
 
-
 unsigned int Crc16(byte* px, int startIndex,int usLen)
 {
     /* int result;

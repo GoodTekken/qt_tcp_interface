@@ -6,9 +6,9 @@
 #include <QTcpSocket>
 #include <QTextCodec>
 //#include <QDebug>
-#include "AGVMessage/AGV_Struct.h"
-#include "AGVMessage/AGV_Message.h"
-#include "AGVMessage/AgvExternalPara.h"
+//#include "AGVMessage/AGV_Struct.h"
+//#include "AGVMessage/AGV_Message.h"
+//#include "AGVMessage/AgvExternalPara.h"
 
 #include"PDS_protocol/pdsStruct.h"
 #include "Spline/ExternalPathCoordinateSet.h"

@@ -10,14 +10,14 @@ ClientPDS::ClientPDS(QWidget *parent) :
     tcpSocket = new QTcpSocket(this);
     setWindowTitle("ClientPDS");
 
-    connect(tcpSocket,&QTcpSocket::connected,
+    connect(tcpSocket,&QTcpSocket::connected,this,
             [=]()
             {
                 ui->textEditRead->setText("Success to connect with Host!");
             }
             );
 
-    connect(tcpSocket,&QTcpSocket::readyRead,
+    connect(tcpSocket,&QTcpSocket::readyRead,this,
             [=]()
             {
                 QByteArray array = tcpSocket->readAll();
