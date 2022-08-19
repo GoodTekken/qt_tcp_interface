@@ -6,16 +6,9 @@ ClientPDS::ClientPDS(QWidget *parent) :
     ui(new Ui::ClientPDS)
 {
     ui->setupUi(this);
-
     tcpSocket = NULL;
-
     tcpSocket = new QTcpSocket(this);
-
-    setWindowTitle("Client");
-
-    ui->textEditWrite->setPlainText("73 74 61 72 00 00 00 01 00 00 00 07 00 04 3f 99 99 9a 00 73 74 6f 70 0d 0a");
-
-//     abc_test = 1;
+    setWindowTitle("ClientPDS");
 
     connect(tcpSocket,&QTcpSocket::connected,
             [=]()
@@ -50,23 +43,13 @@ void ClientPDS::on_pushButtonConnect_clicked()
 
 void ClientPDS::on_pushButtonSend_clicked()
 {
-//    QString str = ui->textEditWrite->toPlainText();
-//    tcpSocket->write(str.toUtf8().data());
 
-    QString str = ui->textEditWrite->toPlainText();
-    QByteArray arr;
-    string_to_hex(str,arr);
-    tcpSocket->write(arr);
-//    double leftHole_x = ui->lineEditLeftHole_X->text().toDouble();
-//    double leftHole_y = ui->lineEditLeftHole_Y->text().toDouble();
-//    double rightHole_x = ui->lineEditRightHole_X->text().toDouble();
-//    double rightHole_y = ui->lineEditRightHole_Y->text().toDouble();
-
-//    QPoint leftHole = QPoint(static_cast<int>(leftHole_x),static_cast<int>(leftHole_y));
-//    QPoint rightHole = QPoint(static_cast<int>(rightHole_x),static_cast<int>(rightHole_y));
-//    QPoint middlePoint = GetMiddlePoint(leftHole,rightHole);
-//    line_struct a = TwoPointToLine(leftHole,rightHole);
-//    g_AGV_ptr->RackPosition = CoordinateClass(-middlePoint.y(),middlePoint.x(),0,a.angle);
+    QByteArray array;
+    uint32_t commandID = 1;
+    uint16_t palletType = 2;
+    PalletRequestClass palletRequest(commandID,palletType);
+    array = palletRequest.ToArray();
+    tcpSocket->write(array);
 }
 
 void ClientPDS::on_pushButtonClose_clicked()

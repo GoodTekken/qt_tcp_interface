@@ -54,33 +54,16 @@ ServerWidget::ServerWidget(QWidget *parent) :
                             }
 
                             qDebug("%d",count);
-                            byte* px = reinterpret_cast<byte*>(array.data());
-                            externalPath* ptr = reinterpret_cast<externalPath*>(array.data());
-
-                            unsigned int crc = Crc16(px, 2, 16);//20
-                            if(crc == ptr->crcCode)
+                            if(count==25)
                             {
-                                ;
+                                getPalletRequest *data = (getPalletRequest*)array.data();
+//                                externalPath* ptr = reinterpret_cast<externalPath*>(array.data());
+                                qDebug("commandID:%d",data->commandID);
+                                qDebug("argsLen:%d",data->argsLen);
+                                qDebug("palletType:%d",data->palletType);
+                                qDebug("depthHint:%f",data->depthHint);
+                                qDebug("filterMask:%d",data->filterMask);
                             }
-
-                            ptr->carrierID = swapInt16(ptr->carrierID);
-                            ptr->externalSegmentRequest = swapInt16(ptr->externalSegmentRequest);
-                            ptr->externalSegmentID = swapInt16(ptr->externalSegmentID);
-                            ptr->externalAngle = swapInt16(ptr->externalAngle);
-                            ptr->externalXcoordinate = swapInt32(ptr->externalXcoordinate);
-                            ptr->externalYcoordinate = swapInt32(ptr->externalYcoordinate);
-                            ptr->presentSegmentID = swapInt16(ptr->presentSegmentID);
-                            qtcout<<ptr->carrierID;
-                            qtcout<<ptr->externalXcoordinate;
-                            qtcout<<ptr->externalYcoordinate;
-                            qtcout<<crc;
-
-                            g_AGV_ptr->AgvReferencePointPosition = CoordinateClass(static_cast<int>(ptr->externalXcoordinate),
-                                                                                   static_cast<int>(ptr->externalYcoordinate),
-                                                                                   0,
-                                                                                   static_cast<int>(ptr->externalAngle/100.0));
-
-
                         }
                         );
 

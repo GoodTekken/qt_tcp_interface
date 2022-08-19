@@ -1,7 +1,12 @@
 #ifndef PDSSTRUCT_H
 #define PDSSTRUCT_H
 #include <cstdint>
+<<<<<<< HEAD
 #include<QByteArray>
+=======
+
+#pragma pack(1)     //设置结构体为1字节对齐
+>>>>>>> 78ebb0cbbff571e6e64c151d822248aaabf1fcb2
 typedef struct
 {
                                    //total: 25 bytes
@@ -13,6 +18,7 @@ typedef struct
     uint8_t  filterMask;           //1 byte  (bit0 = stray light filter, bit1 = fast flying pixel filter, bit2 = stretch wrap filter)
     char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
 }getPalletRequest;
+#pragma pack()		//结束结构体对齐设置
 
 typedef struct
 {
@@ -49,6 +55,7 @@ typedef struct
 }getPalletResponse_failure;
 
 
+<<<<<<< HEAD
 typedef struct 
 {
     //total 22 bytes
@@ -216,4 +223,6 @@ typedef  struct
 
 
 
+=======
+>>>>>>> 78ebb0cbbff571e6e64c151d822248aaabf1fcb2
 #endif // PDSSTRUCT_H
