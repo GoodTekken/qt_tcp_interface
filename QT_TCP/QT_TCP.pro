@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+unix:QMAKE_CFLAGS_WARN_ON += -Wno-deprecated-copy
+unix:QMAKE_CXXFLAGS_WARN_ON += -Wno-deprecated-copy
 QT       += core gui
 QT       += network
 QT       += widgets
