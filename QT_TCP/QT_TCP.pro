@@ -30,6 +30,7 @@ CONFIG += c++14
 
 SOURCES += \
     Function/function.cpp \
+    PDS_protocol/pdsPalletCoordinateClass.cpp \
     PDS_protocol/pdsPalletRequestClass.cpp \
     PDS_protocol/pdsPalletResponseClass.cpp \
     PDS_protocol/pdsProtocol.cpp \
@@ -48,6 +49,7 @@ SOURCES += \
 HEADERS += \
     Function/function.h \
     PDS_protocol/pdsErrorCode.h \
+    PDS_protocol/pdsPalletCoordinateClass.h \
     PDS_protocol/pdsPalletRequestClass.h \
     PDS_protocol/pdsPalletResponseClass.h \
     PDS_protocol/pdsProtocol.h \
