@@ -42,7 +42,10 @@ SOURCES += \
     AGVMessage/RequestExternalClass.cpp \
     AGVMessage/AgvExternalPara.cpp \
     AGVMessage/CommunicationClass.cpp \
-    Math/UserMatrix.cpp
+    Math/UserMatrix.cpp \
+    PDS_protocol/noopclass.cpp
+
+
 
 HEADERS += \
     Function/function.h \
@@ -61,7 +64,11 @@ HEADERS += \
     AGVMessage/CommunicationClass.h \
     Math/UserMatrix.h \
     AGVMessage/CoordinateClass.h \
-    main.h
+    main.h \
+    PDS_protocol/noopclass.h
+
+
+
 
 FORMS += \
     clientPDS.ui \
