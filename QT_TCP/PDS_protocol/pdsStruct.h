@@ -3,6 +3,9 @@
 #include <cstdint>
 
 #pragma pack(1)     //设置结构体为1字节对齐
+const char  seqStart[4]={0x73,0x74,0x61,0x72};
+const char  seqEnd[6]={0x73,0x74,0x6f,0x70,0x0D,0x0A};
+
 
 typedef struct
 {
@@ -301,6 +304,26 @@ typedef  struct
     uint32_t len;                  //4 byte  (value: 6)
     char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
 }saveExtrinsicsResponse;
+
+typedef struct
+{
+    //total: 18 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 0,The command id of the request being sent)
+    uint32_t argsLen;              //4 byte  (value: 0,The size in bytes of the arguments sent to the command)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+} noopRequest;
+
+typedef  struct
+{
+    //total 30 bytes
+    char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
+    uint32_t commandID;            //4 byte  (value: 0,The command id of the request being sent)
+    int32_t errorCode;             //4 byte  (value: Unless the return code is PDS_NO_ERRORS, the caller should not attempt the pick)
+    uint32_t len;                  //4 byte  (value: 6)
+    char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
+}noopResponse;
+
 
 #pragma pack()		//结束结构体对齐设置
 #endif // PDSSTRUCT_H
