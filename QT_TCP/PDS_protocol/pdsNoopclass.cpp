@@ -1,31 +1,63 @@
 #include "PDS_protocol/pdsNoopclass.h"
 #include<cstring>
 #include<QObject>
-noopClass::noopClass()
+pdsNoopRequest::pdsNoopRequest()
 {
-    std::strncpy(request.startSequnce,seqStart,4);
+    strncpy(request.startSequnce,seqStart,4);
     request.argsLen=0;
     request.commandID=0;
-    std::strncpy(request.stopSequence,seqEnd,6);
+    strncpy(request.stopSequence,seqEnd,6);
 }
-noopClass::noopClass(uint32_t commandID)
+pdsNoopRequest::pdsNoopRequest(uint32_t commandID)
 {
     assert(commandID==0);
-    std::strncpy(request.startSequnce,seqStart,4);
+    strncpy(request.startSequnce,seqStart,4);
     request.argsLen=0;
     request.commandID=commandID;
-    std::strncpy(request.stopSequence,seqEnd,6);
+    strncpy(request.stopSequence,seqEnd,6);
 }
-noopClass::noopClass(QByteArray rawBytes){
-   std::memcpy(&request,rawBytes.data(),sizeof(noopRequest));
+pdsNoopRequest::pdsNoopRequest(QByteArray rawBytes){
+   memcpy(&request,rawBytes.data(),sizeof(noopRequest));
 }
-QByteArray noopClass::toArray(){
+QByteArray pdsNoopRequest::toArray(){
     QByteArray temp;
     temp.resize(sizeof(noopRequest));
-    std::memcpy(temp.begin(),&request,sizeof(noopRequest));
+    memcpy(temp.begin(),&request,sizeof(noopRequest));
     return  temp;
 }
 
-noopClass::~noopClass(){
+pdsNoopRequest::~pdsNoopRequest(){
 
 }
+pdsNoopResponse::~pdsNoopResponse(){
+
+}
+pdsNoopResponse::pdsNoopResponse(){
+    strncpy(response.startSequnce,seqStart,4);
+    response.commandID=0;
+    response.errorCode=0;
+    response.len=6;
+    strncpy(response.stopSequence,seqEnd,6);
+}
+pdsNoopResponse::pdsNoopResponse(uint32_t commandID,int32_t errcode){
+    assert(commandID==0);
+    strncpy(response.startSequnce,seqStart,4);
+    response.commandID=0;
+    response.errorCode=errcode;
+    response.len=6;
+    strncpy(response.stopSequence,seqEnd,6);
+}
+pdsNoopResponse::pdsNoopResponse(QByteArray array){
+    memcpy(&response,array.data(),sizeof(noopResponse));
+
+}
+
+QByteArray pdsNoopResponse::toArray(){
+    QByteArray temp;
+    temp.resize(sizeof(noopResponse));
+    memcpy(temp.begin(),&response,sizeof(noopResponse));
+    temp[12]=0x0;
+    temp[16]=0x6;
+    return  temp;
+}
+
