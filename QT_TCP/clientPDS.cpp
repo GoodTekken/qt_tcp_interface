@@ -21,8 +21,19 @@ ClientPDS::ClientPDS(QWidget *parent) :
             [=]()
             {
                 QByteArray array = tcpSocket->readAll();
-//                qtcout(array.toHex());
-                ui->textEditRead->append(array);
+                int count = array.count();
+                if(count == 22)
+                {
+                    pdsPalletResponseClass palletResponse(array);
+                    QString str= "commandID:"+QString::number(palletResponse.palletResponseFailureStruct.commandID) +
+                                 " errorCode:"+QString::number(palletResponse.palletResponseFailureStruct.errorCode)+
+                                 " len:"+QString::number(palletResponse.palletResponseFailureStruct.len);
+                    ui->textEditRead->append(str);
+                }
+                else
+                {
+                    ui->textEditRead->append(array);
+                }
             }
             );
 }
@@ -47,7 +58,7 @@ void ClientPDS::on_pushButtonSend_clicked()
     QByteArray array;
     uint32_t commandID = 3;
     uint16_t palletType = 2;
-    PalletRequestClass palletRequest(commandID,palletType);
+    pdsPalletRequestClass palletRequest(commandID,palletType);
     array = palletRequest.ToArray();
     tcpSocket->write(array);
 }
