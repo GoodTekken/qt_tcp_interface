@@ -31,6 +31,7 @@ CONFIG += c++14
 SOURCES += \
     Function/function.cpp \
     PDS_protocol/pdsPalletRequestClass.cpp \
+    PDS_protocol/pdsPalletResponseClass.cpp \
     PDS_protocol/pdsProtocol.cpp \
     clientPDS.cpp \
         main.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     Function/function.h \
     PDS_protocol/pdsErrorCode.h \
     PDS_protocol/pdsPalletRequestClass.h \
+    PDS_protocol/pdsPalletResponseClass.h \
     PDS_protocol/pdsProtocol.h \
     PDS_protocol/pdsStruct.h \
     clientPDS.h \

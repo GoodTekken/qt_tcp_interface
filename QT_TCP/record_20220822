@@ -1,1 +1,8 @@
 1,change the class name from PalletRequestClass to pdsPalletRequestClass.
+2,add pdsPalletResponseClass to PDS_protocol directory
+----|
+    |_...
+    |_pdsPalletResponseClass.h
+    |_pdsPalletResponseClass.cpp
+
+3,Todo: "getPalletResponse_success" not add yet.

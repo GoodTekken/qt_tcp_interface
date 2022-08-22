@@ -1,6 +1,7 @@
 #include "serverwidget.h"
 #include "ui_serverwidget.h"
 #include "PDS_protocol/pdsPalletRequestClass.h"
+#include "PDS_protocol/pdsPalletResponseClass.h"
 
 typedef unsigned char byte;
 
@@ -42,7 +43,16 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                 QString str= "commandID:"+QString::number(palletRequest.palletRequestStruct.commandID) +
                                              " palletType:"+QString::number(palletRequest.palletRequestStruct.palletType)+
                                              " depthHint:"+QString::number(palletRequest.palletRequestStruct.depthHint);
-                                tcpSocket->write(str.toUtf8().data());
+//                                tcpSocket->write(str.toUtf8().data());
+                                int errorCode = -45;
+                                if(errorCode !=0 )
+                                {
+                                    pdsPalletResponseClass palletResponse;
+                                    palletResponse.response_failure(palletRequest.palletRequestStruct.commandID,errorCode);
+                                    QByteArray array;
+                                    array = palletResponse.ToFailureArray();
+                                    tcpSocket->write(array);
+                                }
                             }
                         }
                         );
