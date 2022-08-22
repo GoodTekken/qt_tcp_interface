@@ -39,10 +39,9 @@ ServerWidget::ServerWidget(QWidget *parent) :
                             if(count==25)
                             {
                                 PalletRequestClass palletRequest(array);
-
                                 QString str= "commandID:"+QString::number(palletRequest.palletRequestStruct.commandID) +
                                              " palletType:"+QString::number(palletRequest.palletRequestStruct.palletType)+
-                                             " depthHint:"+QString::number(palletRequest.depthHint);
+                                             " depthHint:"+QString::number(palletRequest.palletRequestStruct.depthHint);
                                 tcpSocket->write(str.toUtf8().data());
                             }
                         }

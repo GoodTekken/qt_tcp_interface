@@ -12,6 +12,10 @@ class PalletRequestClass
 public:
 
     getPalletRequest palletRequestStruct;
+    uint32_t commandID;
+    uint32_t argsLen;
+    uint16_t palletType;
+
     float depthHint;
 
     PalletRequestClass();     //default: command Id - 1,pallet type - 1
