@@ -1,6 +1,6 @@
 #include "serverwidget.h"
 #include "ui_serverwidget.h"
-#include "PDS_protocol/PalletRequestClass.h"
+#include "PDS_protocol/pdsPalletRequestClass.h"
 
 typedef unsigned char byte;
 
@@ -38,7 +38,7 @@ ServerWidget::ServerWidget(QWidget *parent) :
                             qDebug("%d",count);
                             if(count==25)
                             {
-                                PalletRequestClass palletRequest(array);
+                                pdsPalletRequestClass palletRequest(array);
                                 QString str= "commandID:"+QString::number(palletRequest.palletRequestStruct.commandID) +
                                              " palletType:"+QString::number(palletRequest.palletRequestStruct.palletType)+
                                              " depthHint:"+QString::number(palletRequest.palletRequestStruct.depthHint);

@@ -7,7 +7,7 @@
 #include <QDebug>
 
 #include "AGVMessage/AgvExternalPara.h"
-#include "PDS_protocol/PalletRequestClass.h"
+#include "PDS_protocol/pdsPalletRequestClass.h"
 #include "Spline/ExternalPathCoordinateSet.h"
 #include "Math/UserMatrix.h"
 #include "main.h"

@@ -1,4 +1,4 @@
-#include "PDS_protocol/PalletRequestClass.h"
+#include "PDS_protocol/pdsPalletRequestClass.h"
 #include "Function/function.h"
 #include <cstring>
 #include <iostream>
@@ -6,17 +6,17 @@
 
 #define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]"
 
-PalletRequestClass::PalletRequestClass()
+pdsPalletRequestClass::pdsPalletRequestClass()
 {
 
 };
 
-PalletRequestClass::~PalletRequestClass()
+pdsPalletRequestClass::~pdsPalletRequestClass()
 {
 
 };
 
-PalletRequestClass::PalletRequestClass(uint32_t commandID, uint16_t palletType)
+pdsPalletRequestClass::pdsPalletRequestClass(uint32_t commandID, uint16_t palletType)
 {
     palletRequestStruct.startSequnce[0] = 0x73;//73 74 61 72
     palletRequestStruct.startSequnce[1] = 0x74;
@@ -26,7 +26,7 @@ PalletRequestClass::PalletRequestClass(uint32_t commandID, uint16_t palletType)
     palletRequestStruct.commandID = commandID;
     palletRequestStruct.argsLen = 7;
     palletRequestStruct.palletType = palletType;
-    palletRequestStruct.depthHint = -12456789.35;
+    palletRequestStruct.depthHint = 1.2;
     palletRequestStruct.filterMask = 0;
 
     palletRequestStruct.stopSequence[0] = 0x73;//73 74 6f 70 0d 0a
@@ -37,7 +37,7 @@ PalletRequestClass::PalletRequestClass(uint32_t commandID, uint16_t palletType)
     palletRequestStruct.stopSequence[5] = 0x0a;
 };
 
-QByteArray PalletRequestClass::ToArray()
+QByteArray pdsPalletRequestClass::ToArray()
 {
     palletRequestStruct.commandID = swapUInt32(palletRequestStruct.commandID);
     palletRequestStruct.argsLen = swapUInt32(palletRequestStruct.argsLen);
@@ -64,7 +64,7 @@ QByteArray PalletRequestClass::ToArray()
     return array;
 }
 
-PalletRequestClass::PalletRequestClass(QByteArray array)
+pdsPalletRequestClass::pdsPalletRequestClass(QByteArray array)
 {
     getPalletRequest* data = (getPalletRequest*)array.data();
     data->commandID=swapUInt32(data->commandID);
@@ -96,7 +96,7 @@ PalletRequestClass::PalletRequestClass(QByteArray array)
 //    qDebug("%f",data->depthHint);
 }
 
-void PalletRequestClass::ToString()
+void pdsPalletRequestClass::ToString()
 {
 
 };
