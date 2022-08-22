@@ -4,6 +4,7 @@
 #include <string>
 #include <QObject>
 #include"PDS_protocol/pdsStruct.h"
+#include"PDS_protocol/pdsPalletCoordinateClass.h"
 
 class pdsPalletResponseClass
 {
@@ -15,6 +16,9 @@ public:
 
     void response_failure(uint32_t commandID,int32_t errorCode);
     QByteArray ToFailureArray();
+
+    void response_success(pdsPalletCoordinateClass palletCoordinate);
+    QByteArray ToSuccessArray();
 
     pdsPalletResponseClass(QByteArray array);
     void ToString();

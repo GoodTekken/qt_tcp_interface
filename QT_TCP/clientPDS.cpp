@@ -30,6 +30,30 @@ ClientPDS::ClientPDS(QWidget *parent) :
                                  " len:"+QString::number(palletResponse.palletResponseFailureStruct.len);
                     ui->textEditRead->append(str);
                 }
+                else if(count == 78)
+                {
+                    pdsPalletResponseClass palletResponse(array);
+                    QString str= "commandID:"+QString::number(palletResponse.palletResponseSuccessStruct.commandID) +"\r\n"+
+                    " errorCode:"+QString::number(palletResponse.palletResponseSuccessStruct.errorCode)+"\r\n"+
+                    " len:"+QString::number(palletResponse.palletResponseSuccessStruct.len)+"\r\n"+
+                    " elapsedTime:"+QString::number(palletResponse.palletResponseSuccessStruct.elapsedTime)+"\r\n"+
+                    " confidence:"+QString::number(palletResponse.palletResponseSuccessStruct.confidence)+"\r\n"+
+                    " palletX:"+QString::number(palletResponse.palletResponseSuccessStruct.palletX)+"\r\n"+
+                    " palletY:"+QString::number(palletResponse.palletResponseSuccessStruct.palletY)+"\r\n"+
+                    " palletZ:"+QString::number(palletResponse.palletResponseSuccessStruct.palletZ)+"\r\n"+
+                    " leftPocketX:"+QString::number(palletResponse.palletResponseSuccessStruct.leftPocketX)+"\r\n"+
+                    " leftPocketY:"+QString::number(palletResponse.palletResponseSuccessStruct.leftPocketY)+"\r\n"+
+                    " leftPocketZ:"+QString::number(palletResponse.palletResponseSuccessStruct.leftPocketZ)+"\r\n"+
+                    " rightPocketX:"+QString::number(palletResponse.palletResponseSuccessStruct.rightPocketX)+"\r\n"+
+                    " rightPocketY:"+QString::number(palletResponse.palletResponseSuccessStruct.rightPocketY)+"\r\n"+
+                    " rightPocketZ:"+QString::number(palletResponse.palletResponseSuccessStruct.rightPocketZ)+"\r\n"+
+                    " roll:"+QString::number(palletResponse.palletResponseSuccessStruct.roll)+"\r\n"+
+                    " pitch:"+QString::number(palletResponse.palletResponseSuccessStruct.pitch)+"\r\n"+
+                    " yaw:"+QString::number(palletResponse.palletResponseSuccessStruct.yaw)+"\r\n"
+                            ;
+                    ui->textEditRead->append(str);
+
+                }
                 else
                 {
                     ui->textEditRead->append(array);
