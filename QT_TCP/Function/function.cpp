@@ -110,3 +110,17 @@ float Byte2Float(QByteArray byte)
     return result;
 }
 
+void reverseByte(QByteArray &arrayToChange,uint32_t start,uint32_t end){
+    //the end will be swap too
+    //you should offer a close interval
+    assert(start<=end);
+    char byte;
+    for (uint32_t i=start;i<=(start+end)/2;i++) {
+        byte=arrayToChange[i];
+        arrayToChange[start+i]=arrayToChange[end-i];
+        arrayToChange[end-i]=byte;
+    }
+
+
+
+}

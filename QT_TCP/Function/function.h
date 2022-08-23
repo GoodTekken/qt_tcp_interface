@@ -26,4 +26,5 @@ int32_t swapInt32(int32_t value);
 
 float Byte2Float(QByteArray byte);
 
+void reverseByte(QByteArray &arrayToChange,uint32_t start,uint32_t end);
 #endif // FUNCTION_H
