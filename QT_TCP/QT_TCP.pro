@@ -113,7 +113,8 @@ LIBS += /usr/lib/x86_64-linux-gnu/libpthread*
 DISTFILES += \
     record_20220818 \
     record_20220819 \
-    record_20220822
+    record_20220822 \
+    record_20220823
 
 
 
