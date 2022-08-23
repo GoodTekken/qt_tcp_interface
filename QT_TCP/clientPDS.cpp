@@ -9,6 +9,7 @@ ClientPDS::ClientPDS(QWidget *parent) :
     tcpSocket = NULL;
     tcpSocket = new QTcpSocket(this);
     setWindowTitle("ClientPDS");
+    ui->textEditWrite->setPlainText("73 74 61 72 00 00 00 01 00 00 00 07 00 04 3f 99 99 9a 00 73 74 6f 70 0d 0a");
 
     connect(tcpSocket,&QTcpSocket::connected,this,
             [=]()
@@ -132,5 +133,17 @@ void ClientPDS::on_pushButtonSendGetPallet_clicked()
 }
 
 
+void ClientPDS::on_pushButtonSend_clicked()
+{
+    QString str = ui->textEditWrite->toPlainText();
+    QByteArray arr;
+    string_to_hex(str,arr);
+    tcpSocket->write(arr);
+}
 
+
+void ClientPDS::on_pushButtonClean_clicked()
+{
+    ui->textEditRead->clear();
+}
 
