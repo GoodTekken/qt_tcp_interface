@@ -32,6 +32,8 @@ public:
 
     void pds_get_pallet_command(QByteArray array);
 
+    void pds_get_rack_command(QByteArray array);
+
 private slots:
     void on_buttonSend_clicked();
 

@@ -1,5 +1,7 @@
 #include "function.h"
 
+#define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]"
+
 void string_to_hex(QString hex,QByteArray &qbyte)
 {
     hex=hex.trimmed();
@@ -96,7 +98,7 @@ int32_t swapInt32(int32_t value)
            ((value & 0xFF000000) >> 24);
 }
 
-float Byte2Float(QByteArray byte)
+float byte2Float(QByteArray byte)
 {
     float result = 0;
     int size = byte.size();
@@ -107,6 +109,16 @@ float Byte2Float(QByteArray byte)
         *(p + index) = *(data_char + size - 1 - index);
         }
     return result;
+}
+
+float byte2Float(QByteArray &arrayToChange,uint32_t start)
+{
+    QByteArray array;
+    for(uint32_t i = start;i<(start+4);i++)
+    {
+        array.append(arrayToChange[i]);
+    }
+    return byte2Float(array);
 }
 
 void reverseByte(QByteArray &arrayToChange,uint32_t start,uint32_t end)

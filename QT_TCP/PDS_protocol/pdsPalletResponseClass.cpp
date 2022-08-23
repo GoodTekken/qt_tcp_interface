@@ -31,12 +31,7 @@ QByteArray pdsPalletResponseClass::ToFailureArray()
 
     QByteArray array;
     array.clear();
-    unsigned char buf[22];
-    std::memcpy(buf,(char*)&palletResponseFailureStruct,sizeof(palletResponseFailureStruct));
-    for(int i= 0;i<22;i++)
-    {
-        array.append(buf[i]);
-    }
+    array.append((char*)&palletResponseFailureStruct,sizeof(palletResponseFailureStruct));
     return array;
 }
 
@@ -68,27 +63,15 @@ QByteArray pdsPalletResponseClass::ToSuccessArray()
     palletResponseSuccessStruct.errorCode = swapInt32(palletResponseSuccessStruct.errorCode);
     palletResponseSuccessStruct.len = swapUInt32(palletResponseSuccessStruct.len);
 
+//    unsigned char buf[78];
+//    std::memcpy(buf,(char*)&palletResponseSuccessStruct,sizeof(palletResponseSuccessStruct));
     QByteArray array;
     array.clear();
-    unsigned char buf[78];
-    std::memcpy(buf,(char*)&palletResponseSuccessStruct,sizeof(palletResponseSuccessStruct));
-    for(int i= 0;i<16;i++)
+    array.append((char*)&palletResponseSuccessStruct,sizeof(palletResponseSuccessStruct));
+    for(uint32_t i =0;i<14;i++)      //float transform
     {
-        array.append(buf[i]);
-    }
-
-    for(int i =0;i<14;i++)
-    {
-        int index = 16 + 4*i;    //16 + 4*13 = 68
-        array.append(buf[index+3]);
-        array.append(buf[index+2]);
-        array.append(buf[index+1]);
-        array.append(buf[index]);
-    }
-
-    for(int i= 72;i<78;i++)
-    {
-        array.append(buf[i]);
+        uint32_t index = 16 + 4*i;    //16 + 4*13 = 68
+        reverseByte(array,index,index+3);
     }
     return array;
 }
@@ -119,90 +102,20 @@ pdsPalletResponseClass::pdsPalletResponseClass(QByteArray array)
         palletResponseSuccessStruct.commandID = data->commandID;
         palletResponseSuccessStruct.errorCode = data->errorCode;
         palletResponseSuccessStruct.len = data->len;
-        QByteArray array_temp;
-        array_temp.append(array[16]);
-        array_temp.append(array[17]);
-        array_temp.append(array[18]);
-        array_temp.append(array[19]);
-        palletResponseSuccessStruct.elapsedTime = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[20]);
-        array_temp.append(array[21]);
-        array_temp.append(array[22]);
-        array_temp.append(array[23]);
-        palletResponseSuccessStruct.confidence = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[24]);
-        array_temp.append(array[25]);
-        array_temp.append(array[26]);
-        array_temp.append(array[27]);
-        palletResponseSuccessStruct.palletX = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[28]);
-        array_temp.append(array[29]);
-        array_temp.append(array[30]);
-        array_temp.append(array[31]);
-        palletResponseSuccessStruct.palletY = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[32]);
-        array_temp.append(array[33]);
-        array_temp.append(array[34]);
-        array_temp.append(array[35]);
-        palletResponseSuccessStruct.palletZ = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[36]);
-        array_temp.append(array[37]);
-        array_temp.append(array[38]);
-        array_temp.append(array[39]);
-        palletResponseSuccessStruct.leftPocketX = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[40]);
-        array_temp.append(array[41]);
-        array_temp.append(array[42]);
-        array_temp.append(array[43]);
-        palletResponseSuccessStruct.leftPocketY = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[44]);
-        array_temp.append(array[45]);
-        array_temp.append(array[46]);
-        array_temp.append(array[47]);
-        palletResponseSuccessStruct.leftPocketZ = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[48]);
-        array_temp.append(array[49]);
-        array_temp.append(array[50]);
-        array_temp.append(array[51]);
-        palletResponseSuccessStruct.rightPocketX = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[52]);
-        array_temp.append(array[53]);
-        array_temp.append(array[54]);
-        array_temp.append(array[55]);
-        palletResponseSuccessStruct.rightPocketY = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[56]);
-        array_temp.append(array[57]);
-        array_temp.append(array[58]);
-        array_temp.append(array[59]);
-        palletResponseSuccessStruct.rightPocketZ = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[60]);
-        array_temp.append(array[61]);
-        array_temp.append(array[62]);
-        array_temp.append(array[63]);
-        palletResponseSuccessStruct.roll = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[64]);
-        array_temp.append(array[65]);
-        array_temp.append(array[66]);
-        array_temp.append(array[67]);
-        palletResponseSuccessStruct.pitch = Byte2Float(array_temp);
-        array_temp.clear();
-        array_temp.append(array[68]);
-        array_temp.append(array[69]);
-        array_temp.append(array[70]);
-        array_temp.append(array[71]);
-        palletResponseSuccessStruct.yaw = Byte2Float(array_temp);
+        palletResponseSuccessStruct.elapsedTime = byte2Float(array,16);
+        palletResponseSuccessStruct.confidence = byte2Float(array,20);
+        palletResponseSuccessStruct.palletX = byte2Float(array,24);
+        palletResponseSuccessStruct.palletY = byte2Float(array,28);
+        palletResponseSuccessStruct.palletZ = byte2Float(array,32);
+        palletResponseSuccessStruct.leftPocketX = byte2Float(array,36);
+        palletResponseSuccessStruct.leftPocketY = byte2Float(array,40);
+        palletResponseSuccessStruct.leftPocketZ = byte2Float(array,44);
+        palletResponseSuccessStruct.rightPocketX = byte2Float(array,48);
+        palletResponseSuccessStruct.rightPocketY = byte2Float(array,52);
+        palletResponseSuccessStruct.rightPocketZ = byte2Float(array,56);
+        palletResponseSuccessStruct.roll = byte2Float(array,60);
+        palletResponseSuccessStruct.pitch = byte2Float(array,64);
+        palletResponseSuccessStruct.yaw = byte2Float(array,68);
         strncpy(palletResponseSuccessStruct.stopSequence,data->stopSequence,6);
     }
 }

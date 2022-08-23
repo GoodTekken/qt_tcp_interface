@@ -35,6 +35,7 @@ SOURCES += \
     PDS_protocol/pdsPalletResponseClass.cpp \
     PDS_protocol/pdsProtocol.cpp \
     PDS_protocol/pdsRackCoordinateClass.cpp \
+    PDS_protocol/pdsRackRequestClass.cpp \
     clientPDS.cpp \
         main.cpp \
         serverwidget.cpp \
@@ -60,6 +61,7 @@ HEADERS += \
     PDS_protocol/pdsPalletResponseClass.h \
     PDS_protocol/pdsProtocol.h \
     PDS_protocol/pdsRackCoordinateClass.h \
+    PDS_protocol/pdsRackRequestClass.h \
     PDS_protocol/pdsStruct.h \
     clientPDS.h \
         serverwidget.h \
