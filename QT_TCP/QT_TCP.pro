@@ -51,6 +51,7 @@ SOURCES += \
 
 HEADERS += \
     Function/function.h \
+    PDS_protocol/pdsEnumCode.h \
     PDS_protocol/pdsErrorCode.h \
     PDS_protocol/pdsPalletCoordinateClass.h \
     PDS_protocol/pdsPalletRequestClass.h \
