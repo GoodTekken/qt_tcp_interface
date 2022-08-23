@@ -18,23 +18,13 @@ pdsPalletRequestClass::~pdsPalletRequestClass()
 
 pdsPalletRequestClass::pdsPalletRequestClass(uint32_t commandID, uint16_t palletType)
 {
-    palletRequestStruct.startSequnce[0] = 0x73;//73 74 61 72
-    palletRequestStruct.startSequnce[1] = 0x74;
-    palletRequestStruct.startSequnce[2] = 0x61;
-    palletRequestStruct.startSequnce[3] = 0x72;
-
+    strncpy(palletRequestStruct.startSequnce,seqStart,4);
     palletRequestStruct.commandID = commandID;
     palletRequestStruct.argsLen = 7;
     palletRequestStruct.palletType = palletType;
     palletRequestStruct.depthHint = 1.2;
     palletRequestStruct.filterMask = 0;
-
-    palletRequestStruct.stopSequence[0] = 0x73;//73 74 6f 70 0d 0a
-    palletRequestStruct.stopSequence[1] = 0x74;
-    palletRequestStruct.stopSequence[2] = 0x6f;
-    palletRequestStruct.stopSequence[3] = 0x70;
-    palletRequestStruct.stopSequence[4] = 0x0d;
-    palletRequestStruct.stopSequence[5] = 0x0a;
+    strncpy(palletRequestStruct.stopSequence,seqEnd,6);
 };
 
 QByteArray pdsPalletRequestClass::ToArray()
@@ -78,22 +68,13 @@ pdsPalletRequestClass::pdsPalletRequestClass(QByteArray array)
     depthArray.append(array[17]);
     data->depthHint = Byte2Float(depthArray);//data->depthHint unstable,  can not be used.
 
-    palletRequestStruct.startSequnce[0] = data->startSequnce[0];
-    palletRequestStruct.startSequnce[1] = data->startSequnce[1];
-    palletRequestStruct.startSequnce[2] = data->startSequnce[2];
-    palletRequestStruct.startSequnce[3] = data->startSequnce[3];
+    strncpy(palletRequestStruct.startSequnce,data->startSequnce,4);
     palletRequestStruct.commandID =data->commandID;
     palletRequestStruct.argsLen   =data->argsLen;
     palletRequestStruct.palletType =data->palletType;
     palletRequestStruct.depthHint = Byte2Float(depthArray);
     palletRequestStruct.filterMask =data->filterMask;
-    palletRequestStruct.stopSequence[0] = data->stopSequence[0];
-    palletRequestStruct.stopSequence[1] = data->stopSequence[1];
-    palletRequestStruct.stopSequence[2] = data->stopSequence[2];
-    palletRequestStruct.stopSequence[3] = data->stopSequence[3];
-    palletRequestStruct.stopSequence[4] = data->stopSequence[4];
-    palletRequestStruct.stopSequence[5] = data->stopSequence[5];
-//    qDebug("%f",data->depthHint);
+    strncpy(palletRequestStruct.stopSequence,data->stopSequence,4);
 }
 
 void pdsPalletRequestClass::ToString()

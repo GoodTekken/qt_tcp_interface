@@ -16,21 +16,11 @@ pdsPalletResponseClass::~pdsPalletResponseClass()
 
 void pdsPalletResponseClass::response_failure(uint32_t commandID,int32_t errorCode)
 {
-    palletResponseFailureStruct.startSequnce[0] = 0x73;//73 74 61 72
-    palletResponseFailureStruct.startSequnce[1] = 0x74;
-    palletResponseFailureStruct.startSequnce[2] = 0x61;
-    palletResponseFailureStruct.startSequnce[3] = 0x72;
-
+    strncpy(palletResponseFailureStruct.startSequnce,seqStart,4);
     palletResponseFailureStruct.commandID = commandID;
     palletResponseFailureStruct.errorCode = errorCode;
     palletResponseFailureStruct.len = 6;
-
-    palletResponseFailureStruct.stopSequence[0] = 0x73;//73 74 6f 70 0d 0a
-    palletResponseFailureStruct.stopSequence[1] = 0x74;
-    palletResponseFailureStruct.stopSequence[2] = 0x6f;
-    palletResponseFailureStruct.stopSequence[3] = 0x70;
-    palletResponseFailureStruct.stopSequence[4] = 0x0d;
-    palletResponseFailureStruct.stopSequence[5] = 0x0a;
+    strncpy(palletResponseFailureStruct.stopSequence,seqEnd,6);
 }
 
 QByteArray pdsPalletResponseClass::ToFailureArray()
@@ -52,15 +42,10 @@ QByteArray pdsPalletResponseClass::ToFailureArray()
 
 void pdsPalletResponseClass::response_success(pdsPalletCoordinateClass palletCoordinate)
 {
-    palletResponseSuccessStruct.startSequnce[0] = 0x73;//73 74 61 72
-    palletResponseSuccessStruct.startSequnce[1] = 0x74;
-    palletResponseSuccessStruct.startSequnce[2] = 0x61;
-    palletResponseSuccessStruct.startSequnce[3] = 0x72;
-
+    strncpy(palletResponseSuccessStruct.startSequnce,seqStart,4);
     palletResponseSuccessStruct.commandID = 1;
     palletResponseSuccessStruct.errorCode = 0;
     palletResponseSuccessStruct.len = 62;
-
     palletResponseSuccessStruct.elapsedTime = palletCoordinate.elapsedTime;          //4 byte  (Elapsed time (sec) of the detection)
     palletResponseSuccessStruct.confidence = palletCoordinate.confidence;            //4 byte  (Average correlation score of the segmented pallet pockets against the pocket-type kernel.)
     palletResponseSuccessStruct.palletX = palletCoordinate.palletX;                  //4 byte  (X-position of pallet in camera frame(meters))
@@ -75,14 +60,7 @@ void pdsPalletResponseClass::response_success(pdsPalletCoordinateClass palletCoo
     palletResponseSuccessStruct.roll = palletCoordinate.roll;                        //4 byte  (Rotation of pallet about the x-axis in the camera frame (radians))
     palletResponseSuccessStruct.pitch = palletCoordinate.pitch;                      //4 byte  (Rotation of pallet about the y-axis in the camera frame (radians))
     palletResponseSuccessStruct.yaw = palletCoordinate.yaw;                          //4 byte  (Rotation of pallet about the z-axis in camera frame (radians))
-
-    palletResponseSuccessStruct.stopSequence[0] = 0x73;//73 74 6f 70 0d 0a
-    palletResponseSuccessStruct.stopSequence[1] = 0x74;
-    palletResponseSuccessStruct.stopSequence[2] = 0x6f;
-    palletResponseSuccessStruct.stopSequence[3] = 0x70;
-    palletResponseSuccessStruct.stopSequence[4] = 0x0d;
-    palletResponseSuccessStruct.stopSequence[5] = 0x0a;
-    ;
+    strncpy(palletResponseSuccessStruct.stopSequence,seqEnd,6);
 }
 QByteArray pdsPalletResponseClass::ToSuccessArray()
 {
@@ -124,19 +102,11 @@ pdsPalletResponseClass::pdsPalletResponseClass(QByteArray array)
         data->commandID = swapUInt32(data->commandID);
         data->errorCode = swapInt32(data->errorCode);
         data->len = swapUInt32(data->len);
-        palletResponseFailureStruct.startSequnce[0] = data->startSequnce[0];
-        palletResponseFailureStruct.startSequnce[1] = data->startSequnce[1];
-        palletResponseFailureStruct.startSequnce[2] = data->startSequnce[2];
-        palletResponseFailureStruct.startSequnce[3] = data->startSequnce[3];
+        strncpy(palletResponseFailureStruct.startSequnce,data->startSequnce,4);
         palletResponseFailureStruct.commandID = data->commandID;
         palletResponseFailureStruct.errorCode = data->errorCode;
         palletResponseFailureStruct.len = data->len;
-        palletResponseFailureStruct.stopSequence[0] = data->stopSequence[0];
-        palletResponseFailureStruct.stopSequence[1] = data->stopSequence[1];
-        palletResponseFailureStruct.stopSequence[2] = data->stopSequence[2];
-        palletResponseFailureStruct.stopSequence[3] = data->stopSequence[3];
-        palletResponseFailureStruct.stopSequence[4] = data->stopSequence[4];
-        palletResponseFailureStruct.stopSequence[5] = data->stopSequence[5];
+        strncpy(palletResponseFailureStruct.stopSequence,data->stopSequence,6);
     }
 
     if(count == 78)
@@ -145,10 +115,7 @@ pdsPalletResponseClass::pdsPalletResponseClass(QByteArray array)
         data->commandID = swapUInt32(data->commandID);
         data->errorCode = swapInt32(data->errorCode);
         data->len = swapUInt32(data->len);
-        palletResponseSuccessStruct.startSequnce[0] = data->startSequnce[0];
-        palletResponseSuccessStruct.startSequnce[1] = data->startSequnce[1];
-        palletResponseSuccessStruct.startSequnce[2] = data->startSequnce[2];
-        palletResponseSuccessStruct.startSequnce[3] = data->startSequnce[3];
+        strncpy(palletResponseSuccessStruct.startSequnce,data->startSequnce,4);
         palletResponseSuccessStruct.commandID = data->commandID;
         palletResponseSuccessStruct.errorCode = data->errorCode;
         palletResponseSuccessStruct.len = data->len;
@@ -236,13 +203,7 @@ pdsPalletResponseClass::pdsPalletResponseClass(QByteArray array)
         array_temp.append(array[70]);
         array_temp.append(array[71]);
         palletResponseSuccessStruct.yaw = Byte2Float(array_temp);
-
-        palletResponseSuccessStruct.stopSequence[0] = data->stopSequence[0];
-        palletResponseSuccessStruct.stopSequence[1] = data->stopSequence[1];
-        palletResponseSuccessStruct.stopSequence[2] = data->stopSequence[2];
-        palletResponseSuccessStruct.stopSequence[3] = data->stopSequence[3];
-        palletResponseSuccessStruct.stopSequence[4] = data->stopSequence[4];
-        palletResponseSuccessStruct.stopSequence[5] = data->stopSequence[5];
+        strncpy(palletResponseSuccessStruct.stopSequence,data->stopSequence,6);
     }
 }
 

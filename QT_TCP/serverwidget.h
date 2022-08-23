@@ -30,6 +30,8 @@ public:
     explicit ServerWidget(QWidget *parent = nullptr);
     ~ServerWidget();
 
+    void pds_get_pallet_command(QByteArray array);
+
 private slots:
     void on_buttonSend_clicked();
 
