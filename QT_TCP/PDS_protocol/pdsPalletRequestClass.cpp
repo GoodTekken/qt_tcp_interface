@@ -1,10 +1,8 @@
 #include "PDS_protocol/pdsPalletRequestClass.h"
 #include "Function/function.h"
-#include <cstring>
-#include <iostream>
-#include <QDebug>
-
-#define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]"
+//#include <cstring>
+//#include <iostream>
+//#include <QDebug>
 
 pdsPalletRequestClass::pdsPalletRequestClass()
 {
@@ -55,7 +53,7 @@ pdsPalletRequestClass::pdsPalletRequestClass(QByteArray array)
     palletRequestStruct.palletType =data->palletType;
     palletRequestStruct.depthHint = byte2Float(array,14);
     palletRequestStruct.filterMask =data->filterMask;
-    strncpy(palletRequestStruct.stopSequence,data->stopSequence,4);
+    strncpy(palletRequestStruct.stopSequence,data->stopSequence,6);
 }
 
 void pdsPalletRequestClass::ToString()

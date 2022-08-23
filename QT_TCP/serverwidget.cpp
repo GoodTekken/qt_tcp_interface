@@ -55,6 +55,7 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                             break;
 
                                         case PDS_GET_RACK_COMMAND:
+                                            pds_get_rack_command(array);
                                             break;
 
                                         case PDS_VOL_CHECK_COMMAND:
@@ -166,4 +167,22 @@ void ServerWidget::pds_get_pallet_command(QByteArray array)
             tcpSocket->write(array);
         }
     }
+}
+
+void ServerWidget::pds_get_rack_command(QByteArray array)
+{
+    pdsRackRequestClass rackRequest(array);
+    QString str= "commandID:"+QString::number(rackRequest.rackRequestStruct.commandID) + "\r\n"+
+                " argsLen:"+QString::number(rackRequest.rackRequestStruct.argsLen)+ "\r\n"+
+                " horizontalDropPos:"+QString::number(rackRequest.rackRequestStruct.horizontalDropPos)+ "\r\n"+
+                " verticalDropPos:"+QString::number(rackRequest.rackRequestStruct.verticalDropPos)+  "\r\n"+
+                " cameraPos:"+QString::number(rackRequest.rackRequestStruct.cameraPos)+  "\r\n"+
+                " depthHint:"+QString::number(rackRequest.rackRequestStruct.depthHint)+  "\r\n"+
+                " zHint:"+QString::number(rackRequest.rackRequestStruct.zHint)+  "\r\n"+
+                " clearingDepth:"+QString::number(rackRequest.rackRequestStruct.clearingDepth)+  "\r\n"+
+                " clearingWidth:"+QString::number(rackRequest.rackRequestStruct.clearingWidth)+  "\r\n"+
+                " clearingHeight:"+QString::number(rackRequest.rackRequestStruct.clearingHeight)+  "\r\n"+
+                " strayLightFilter:"+QString::number(rackRequest.rackRequestStruct.strayLightFilter)+  "\r\n"+
+                 " ";
+    ui->textEditRead->append(str);
 }

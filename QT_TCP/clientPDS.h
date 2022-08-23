@@ -7,8 +7,7 @@
 #include <QDebug>
 
 #include "AGVMessage/AgvExternalPara.h"
-#include "PDS_protocol/pdsPalletRequestClass.h"
-#include "PDS_protocol/pdsPalletResponseClass.h"
+#include "PDS_protocol/pdsProtocol.h"
 #include "Spline/ExternalPathCoordinateSet.h"
 #include "Math/UserMatrix.h"
 #include "main.h"
@@ -26,6 +25,8 @@ class ClientPDS : public QWidget
 public:
     explicit ClientPDS(QWidget *parent = nullptr);
     ~ClientPDS();
+    void pds_get_pallet_response_command(QByteArray array);
+    void pds_get_rack_response_command(QByteArray array);
 
 
 private slots:

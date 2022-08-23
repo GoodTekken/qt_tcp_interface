@@ -1,5 +1,7 @@
 #include "function.h"
 
+#define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]"
+
 void string_to_hex(QString hex,QByteArray &qbyte)
 {
     hex=hex.trimmed();

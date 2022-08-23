@@ -4,6 +4,8 @@
 #include <QObject>
 //#include <QMutex>
 //#include <QSharedPointer>
+#include <cstdint>
+#include <string>
 
 #include "PDS_protocol/pdsEnumCode.h"
 #include "PDS_protocol/pdsErrorCode.h"
@@ -13,5 +15,8 @@
 #include "PDS_protocol/pdsPalletResponseClass.h"
 #include "PDS_protocol/pdsPalletCoordinateClass.h"
 
+#include "PDS_protocol/pdsRackRequestClass.h"
+//#include "PDS_protocol/pdsRackResponseClass.h"
+#include "PDS_protocol/pdsRackCoordinateClass.h"
 
 #endif // PDSPROTOCOl_H
