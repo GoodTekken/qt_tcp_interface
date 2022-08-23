@@ -36,21 +36,9 @@ QByteArray pdsPalletRequestClass::ToArray()
 
     QByteArray array;
     array.clear();
-    unsigned char buf[25];
-    std::memcpy(buf,(char*)&palletRequestStruct,sizeof(palletRequestStruct));
-    for(int i= 0;i<14;i++)
-    {
-        array.append(buf[i]);
-    }
-    array.append(buf[17]);
-    array.append(buf[16]);
-    array.append(buf[15]);
-    array.append(buf[14]);
-    for(int i= 18;i<25;i++)
-    {
-        array.append(buf[i]);
-    }
-    //array.append((char*)&palletRequestStruct,sizeof(palletRequestStruct));
+    array.append((char*)&palletRequestStruct,sizeof(palletRequestStruct));
+    reverseByte(array,14,17);
+
     return array;
 }
 
@@ -61,18 +49,11 @@ pdsPalletRequestClass::pdsPalletRequestClass(QByteArray array)
     data->argsLen=swapUInt32(data->argsLen);
     data->palletType =swapUInt16(data->palletType);
 
-    QByteArray depthArray;
-    depthArray.append(array[14]);
-    depthArray.append(array[15]);
-    depthArray.append(array[16]);
-    depthArray.append(array[17]);
-    data->depthHint = Byte2Float(depthArray);//data->depthHint unstable,  can not be used.
-
     strncpy(palletRequestStruct.startSequnce,data->startSequnce,4);
     palletRequestStruct.commandID =data->commandID;
     palletRequestStruct.argsLen   =data->argsLen;
     palletRequestStruct.palletType =data->palletType;
-    palletRequestStruct.depthHint = Byte2Float(depthArray);
+    palletRequestStruct.depthHint = byte2Float(array,14);
     palletRequestStruct.filterMask =data->filterMask;
     strncpy(palletRequestStruct.stopSequence,data->stopSequence,4);
 }
