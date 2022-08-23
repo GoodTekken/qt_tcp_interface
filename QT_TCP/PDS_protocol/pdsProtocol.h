@@ -12,6 +12,6 @@
 #include "PDS_protocol/pdsPalletRequestClass.h"
 #include "PDS_protocol/pdsPalletResponseClass.h"
 #include "PDS_protocol/pdsPalletCoordinateClass.h"
-
-
+#include"PDS_protocol/pdsNoopclass.h"
+#include"PDS_protocol/pdssavereferenceforkrequestclass.h"
 #endif // PDSPROTOCOl_H
