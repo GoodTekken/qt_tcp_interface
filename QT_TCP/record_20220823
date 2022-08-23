@@ -1,3 +1,4 @@
 1,creat diffent button in clientPDS.ui for different instruction.
 2,add pdsEnumCode.h in PDS_protocol directory
 3,modified severwidget.cpp to adapt diffent instruction.
+4,add pdsRackCoordinateClass

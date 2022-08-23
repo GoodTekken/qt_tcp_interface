@@ -1,19 +1,6 @@
 #ifndef PDSPALLETCOORDINATECLASS_H
 #define PDSPALLETCOORDINATECLASS_H
-
-typedef struct
-{
-    float x;
-    float y;
-    float z;
-}pds_point;
-
-typedef struct
-{
-    float roll;
-    float pitch;
-    float yaw;
-}pds_posture;
+#include "PDS_protocol/pdsStruct.h"
 
 class pdsPalletCoordinateClass
 {

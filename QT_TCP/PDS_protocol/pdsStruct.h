@@ -6,6 +6,20 @@
 const char  seqStart[4]={0x73,0x74,0x61,0x72};
 const char  seqEnd[6]={0x73,0x74,0x6f,0x70,0x0D,0x0A};
 
+typedef struct
+{
+    float x;
+    float y;
+    float z;
+}pds_point;
+
+typedef struct
+{
+    float roll;
+    float pitch;
+    float yaw;
+}pds_posture;
+
 
 typedef struct
 {
@@ -138,7 +152,7 @@ typedef  struct
     uint32_t commandID;            //4 byte  (value: 4,The command id of the request being sent)
     int32_t errorCode;            //4 byte  (value: Unless the return code is PDS_NO_ERRORS, the caller should not attempt the pick)
     uint32_t len;                  //4 byte  (value: 6+payload,length in bytes of “payload” + “stop sequence)
-    float elapseTime;              //4 byte  (time use to detect)
+    float elapsedTime;              //4 byte  (time use to detect)
     float confidence;               //4 byte (Currently Unused)
     float   X;                      //4 byte (rack x position in camera frame)
     float   Y;                      //4 byte (rack y position in camera frame)
