@@ -43,6 +43,8 @@ private slots:
 
     void on_pushButtonHeartBeat_clicked();
 
+    void on_pushButtonClean_clicked();
+
 private:
     Ui::ClientPDS *ui;
 

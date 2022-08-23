@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>469</width>
+    <width>577</width>
     <height>439</height>
    </rect>
   </property>
@@ -14,28 +14,56 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="7" column="0">
+   <item row="11" column="3">
+    <widget class="QLineEdit" name="lineEditRightHole_X">
+     <property name="text">
+      <string>288</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEditPort">
+     <property name="text">
+      <string>55556</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Server_IP</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Server_Port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0">
     <widget class="QPushButton" name="pushButtonEnter">
      <property name="text">
       <string>Enter</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
-    <widget class="QLineEdit" name="lineEditLeftHole_X">
+   <item row="11" column="4">
+    <widget class="QLineEdit" name="lineEditRightHole_Y">
      <property name="text">
-      <string>-208</string>
+      <string>2734</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="5">
-    <widget class="QTextEdit" name="textEditWrite">
-     <property name="documentTitle">
-      <string/>
+   <item row="12" column="3" colspan="2">
+    <widget class="QPushButton" name="pushButtonLeave">
+     <property name="text">
+      <string>Leave</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="1" colspan="2">
+   <item row="12" column="1" colspan="2">
     <spacer name="horizontalSpacer_2">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -48,59 +76,10 @@
      </property>
     </spacer>
    </item>
-   <item row="4" column="1">
-    <widget class="QPushButton" name="pushButtonSendGetPallet">
+   <item row="9" column="0">
+    <widget class="QPushButton" name="pushButtonHeartBeat">
      <property name="text">
-      <string>GetPallet</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="3">
-    <widget class="QLineEdit" name="lineEditRightHole_X">
-     <property name="text">
-      <string>288</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="3">
-    <widget class="QPushButton" name="pushButtonConnect">
-     <property name="text">
-      <string>Connect</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="4">
-    <widget class="QLineEdit" name="lineEditRightHole_Y">
-     <property name="text">
-      <string>2734</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Server_IP</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="2">
-    <widget class="QLineEdit" name="lineEditPort">
-     <property name="text">
-      <string>55556</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="3">
-    <widget class="QPushButton" name="pushButtonClose">
-     <property name="text">
-      <string>Close</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Server_Port</string>
+      <string>HeartBeat</string>
      </property>
     </widget>
    </item>
@@ -111,7 +90,49 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="2">
+   <item row="0" column="3">
+    <widget class="QPushButton" name="pushButtonConnect">
+     <property name="text">
+      <string>Connect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="5">
+    <widget class="QTextEdit" name="textEditRead">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="pushButtonClose">
+     <property name="text">
+      <string>Close</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1">
+    <widget class="QLineEdit" name="lineEditLeftHole_Y">
+     <property name="text">
+      <string>2747</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QPushButton" name="pushButtonClean">
+     <property name="text">
+      <string>Clean</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QPushButton" name="pushButtonSendGetPallet">
+     <property name="text">
+      <string>GetPallet</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="2">
     <spacer name="horizontalSpacer_4">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -124,31 +145,24 @@
      </property>
     </spacer>
    </item>
-   <item row="7" column="3" colspan="2">
-    <widget class="QPushButton" name="pushButtonLeave">
+   <item row="11" column="0">
+    <widget class="QLineEdit" name="lineEditLeftHole_X">
      <property name="text">
-      <string>Leave</string>
+      <string>-208</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="5">
-    <widget class="QTextEdit" name="textEditRead">
-     <property name="readOnly">
-      <bool>true</bool>
+   <item row="4" column="4">
+    <widget class="QPushButton" name="pushButtonSend">
+     <property name="text">
+      <string>Send</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="lineEditLeftHole_Y">
-     <property name="text">
-      <string>2747</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QPushButton" name="pushButtonHeartBeat">
-     <property name="text">
-      <string>HeartBeat</string>
+   <item row="3" column="0" rowspan="2" colspan="4">
+    <widget class="QTextEdit" name="textEditWrite">
+     <property name="documentTitle">
+      <string/>
      </property>
     </widget>
    </item>
