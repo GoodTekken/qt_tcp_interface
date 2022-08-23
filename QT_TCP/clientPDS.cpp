@@ -117,6 +117,19 @@ void ClientPDS::on_pushButtonLeave_clicked()
     tcpSocket->write(data);
 }
 
+void ClientPDS::on_pushButtonClean_clicked()
+{
+    ui->textEditRead->clear();
+}
+
+void ClientPDS::on_pushButtonSend_clicked()
+{
+    QString str = ui->textEditWrite->toPlainText();
+    QByteArray arr;
+    string_to_hex(str,arr);
+    tcpSocket->write(arr);
+}
+
 void ClientPDS::on_pushButtonHeartBeat_clicked()
 {
     //
@@ -133,17 +146,5 @@ void ClientPDS::on_pushButtonSendGetPallet_clicked()
 }
 
 
-void ClientPDS::on_pushButtonSend_clicked()
-{
-    QString str = ui->textEditWrite->toPlainText();
-    QByteArray arr;
-    string_to_hex(str,arr);
-    tcpSocket->write(arr);
-}
 
-
-void ClientPDS::on_pushButtonClean_clicked()
-{
-    ui->textEditRead->clear();
-}
 
