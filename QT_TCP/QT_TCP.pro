@@ -48,7 +48,9 @@ SOURCES += \
     AGVMessage/CommunicationClass.cpp \
     Math/UserMatrix.cpp \
     PDS_protocol/pdsNoopclass.cpp \
-    PDS_protocol/pdssavereferenceforkrequestclass.cpp
+    PDS_protocol/pdssavereferenceforkrequestclass.cpp \
+    PDS_protocol/pdssavereferenceforkresponseclass.cpp \
+    PDS_protocol/pdsgetarrayrequestclass.cpp
 
 
 
@@ -76,7 +78,10 @@ HEADERS += \
     AGVMessage/CoordinateClass.h \
     main.h \
     PDS_protocol/pdsNoopclass.h \
-    PDS_protocol/pdssavereferenceforkrequestclass.h
+    PDS_protocol/pdssavereferenceforkrequestclass.h \
+    PDS_protocol/pdssavereferenceforkresponseclass.h \
+    PDS_protocol/arrayid.h \
+    PDS_protocol/pdsgetarrayrequestclass.h
 
 
 
