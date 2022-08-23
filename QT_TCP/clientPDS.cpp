@@ -150,18 +150,6 @@ void ClientPDS::on_pushButtonSendGetPallet_clicked()
     tcpSocket->write(array);
 }
 
-
-
-<<<<<<< HEAD
-void ClientPDS::on_pushButtonClean_clicked()
-{
-    ui->textEditRead->clear();
-
-}
-=======
->>>>>>> 948bbca6c4525cb13a279f22aed3b1ddd45c78a6
-
-
 void ClientPDS::on_pushButtonSendCommand_clicked()
 {
 //    For Example:
