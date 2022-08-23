@@ -45,7 +45,7 @@ SOURCES += \
     AGVMessage/AgvExternalPara.cpp \
     AGVMessage/CommunicationClass.cpp \
     Math/UserMatrix.cpp \
-    PDS_protocol/noopclass.cpp
+    PDS_protocol/pdsNoopclass.cpp
 
 
 
@@ -69,7 +69,7 @@ HEADERS += \
     Math/UserMatrix.h \
     AGVMessage/CoordinateClass.h \
     main.h \
-    PDS_protocol/noopclass.h
+    PDS_protocol/pdsNoopclass.h
 
 
 
