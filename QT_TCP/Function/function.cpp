@@ -90,7 +90,6 @@ uint32_t swapUInt32(uint32_t value)
 
 int32_t swapInt32(int32_t value)
 {
-    int a = value;
     return ((value & 0x000000FF) << 24) |
            ((value & 0x0000FF00) << 8) |
            ((value & 0x00FF0000) >> 8) |
@@ -110,17 +109,14 @@ float Byte2Float(QByteArray byte)
     return result;
 }
 
-void reverseByte(QByteArray &arrayToChange,uint32_t start,uint32_t end){
-    //the end will be swap too
-    //you should offer a close interval
+void reverseByte(QByteArray &arrayToChange,uint32_t start,uint32_t end)
+{
     assert(start<=end);
     char byte;
-    for (uint32_t i=start;i<=(start+end)/2;i++) {
-        byte=arrayToChange[i];
+    for (uint32_t i=0;i<=(end-start)/2;i++)
+    {
+        byte=arrayToChange[start+i];
         arrayToChange[start+i]=arrayToChange[end-i];
         arrayToChange[end-i]=byte;
     }
-
-
-
 }
