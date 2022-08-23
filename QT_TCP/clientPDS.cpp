@@ -76,17 +76,6 @@ void ClientPDS::on_pushButtonConnect_clicked()
     tcpSocket->connectToHost(QHostAddress(ip),port);
 }
 
-void ClientPDS::on_pushButtonSend_clicked()
-{
-
-    QByteArray array;
-    uint32_t commandID = 3;
-    uint16_t palletType = 2;
-    pdsPalletRequestClass palletRequest(commandID,palletType);
-    array = palletRequest.ToArray();
-    tcpSocket->write(array);
-}
-
 void ClientPDS::on_pushButtonClose_clicked()
 {
     tcpSocket->disconnectFromHost();
@@ -126,3 +115,22 @@ void ClientPDS::on_pushButtonLeave_clicked()
     QByteArray data = Agv_Coordinate.GetExternalPathByteFromEndToStart_Byte();
     tcpSocket->write(data);
 }
+
+void ClientPDS::on_pushButtonHeartBeat_clicked()
+{
+    //
+}
+
+void ClientPDS::on_pushButtonSendGetPallet_clicked()
+{
+    QByteArray array;
+    uint32_t commandID = 3;
+    uint16_t palletType = 2;
+    pdsPalletRequestClass palletRequest(commandID,palletType);
+    array = palletRequest.ToArray();
+    tcpSocket->write(array);
+}
+
+
+
+

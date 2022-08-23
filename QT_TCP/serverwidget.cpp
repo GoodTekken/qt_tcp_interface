@@ -45,7 +45,7 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                              " palletType:"+QString::number(palletRequest.palletRequestStruct.palletType)+
                                              " depthHint:"+QString::number(palletRequest.palletRequestStruct.depthHint);
 //                                tcpSocket->write(str.toUtf8().data());
-                                int errorCode = -1025;
+                                int errorCode = 0;
                                 if(errorCode !=0 )
                                 {
                                     pdsPalletResponseClass palletResponse;
