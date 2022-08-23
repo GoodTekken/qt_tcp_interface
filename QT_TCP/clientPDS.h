@@ -45,6 +45,8 @@ private slots:
 
     void on_pushButtonClean_clicked();
 
+    void on_pushButtonSendCommand_clicked();
+
 private:
     Ui::ClientPDS *ui;
 

@@ -143,7 +143,7 @@ void ClientPDS::on_pushButtonHeartBeat_clicked()
 void ClientPDS::on_pushButtonSendGetPallet_clicked()
 {
     QByteArray array;
-    uint32_t commandID = 3;
+    uint32_t commandID = 1;
     uint16_t palletType = 2;
     pdsPalletRequestClass palletRequest(commandID,palletType);
     array = palletRequest.ToArray();
@@ -160,4 +160,23 @@ void ClientPDS::on_pushButtonClean_clicked()
 }
 =======
 >>>>>>> 948bbca6c4525cb13a279f22aed3b1ddd45c78a6
+
+
+void ClientPDS::on_pushButtonSendCommand_clicked()
+{
+//    For Example:
+//    QByteArray array;
+//    uint32_t commandID = 1;
+//    uint16_t palletType = 2;
+//    pdsPalletRequestClass palletRequest(commandID,palletType);
+//    array = palletRequest.ToArray();
+//    tcpSocket->write(array);
+
+    QByteArray array;
+    uint32_t commandID = 1;
+    uint16_t palletType = 2;
+    pdsPalletRequestClass palletRequest(commandID,palletType);
+    array = palletRequest.ToArray();
+    tcpSocket->write(array);
+}
 

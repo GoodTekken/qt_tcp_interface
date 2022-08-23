@@ -1,8 +1,6 @@
 #include "serverwidget.h"
 #include "ui_serverwidget.h"
-#include "PDS_protocol/pdsPalletRequestClass.h"
-#include "PDS_protocol/pdsPalletResponseClass.h"
-#include "PDS_protocol/pdsPalletCoordinateClass.h"
+#include "PDS_protocol/pdsProtocol.h"
 
 typedef unsigned char byte;
 
@@ -36,6 +34,55 @@ ServerWidget::ServerWidget(QWidget *parent) :
                         {
                             QByteArray array = tcpSocket->readAll();
                             ui->textEditRead->append(array.toHex());
+                            if(array[0]=='s'&&array[1]=='t'&&array[2]=='a'&&array[3]=='r')
+                            {
+                                    int command = array[7];
+                                    qDebug("command:%d",command);
+                                    switch(command)
+                                    {
+                                        case PDS_HEARTBEAT_COMMAND:
+                                            qDebug("command:%d",command);
+                                            break;
+
+                                        case PDS_GET_PALLET_COMMAND:
+                                            qDebug("command:%d",command);
+                                            break;
+
+                                        case PDS_GET_ARRAY_COMMAND:
+                                            break;
+
+                                        case PDS_SAVE_REFERENCE_FORKS_COMMAND:
+                                            break;
+
+                                        case PDS_GET_RACK_COMMAND:
+                                            break;
+
+                                        case PDS_VOL_CHECK_COMMAND:
+                                            break;
+
+                                        case PDS_GET_CONFIG_COMMAND:
+                                            break;
+
+                                        case PDS_SET_CONFIG_COMMAND:
+                                            break;
+
+                                        case PDS_SAVE_CONFIG_COMMAND:
+                                            break;
+
+                                        case PDS_RESET_CONFIG_COMMAND:
+                                            break;
+
+                                        case PDS_SAVE_EXTRINSICS_COMMAND:
+                                            break;
+
+                                        default:
+                                            break;
+
+                                    }
+                            }
+
+
+
                             int count = array.count();
                             qDebug("%d",count);
                             if(count==18){
