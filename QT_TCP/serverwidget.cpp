@@ -38,6 +38,15 @@ ServerWidget::ServerWidget(QWidget *parent) :
                             ui->textEditRead->append(array.toHex());
                             int count = array.count();
                             qDebug("%d",count);
+                            if(count==18){
+                                int errorcode=0;
+                                if(errorcode!=0){
+
+                                }
+                                else {
+                                    tcpSocket->write("connected");
+                                }
+                            }
                             if(count==25)
                             {
                                 pdsPalletRequestClass palletRequest(array);

@@ -12,7 +12,7 @@
 #include "Spline/ExternalPathCoordinateSet.h"
 #include "Math/UserMatrix.h"
 #include "main.h"
-
+#include "PDS_protocol/pdsNoopclass.h"
 //#define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]";
 
 namespace Ui {

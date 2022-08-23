@@ -120,6 +120,11 @@ void ClientPDS::on_pushButtonLeave_clicked()
 void ClientPDS::on_pushButtonHeartBeat_clicked()
 {
     //
+    QByteArray array;
+    uint32_t commandID=0;
+    pdsNoopRequest req{0};
+    array=req.toArray();
+    tcpSocket->write(array);
 }
 
 void ClientPDS::on_pushButtonSendGetPallet_clicked()
@@ -145,5 +150,6 @@ void ClientPDS::on_pushButtonSend_clicked()
 void ClientPDS::on_pushButtonClean_clicked()
 {
     ui->textEditRead->clear();
+
 }
 
