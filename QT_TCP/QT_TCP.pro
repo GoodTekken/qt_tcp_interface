@@ -53,7 +53,8 @@ SOURCES += \
     PDS_protocol/pdsNoopclass.cpp \
     PDS_protocol/pdssavereferenceforkrequestclass.cpp \
     PDS_protocol/pdssavereferenceforkresponseclass.cpp \
-    PDS_protocol/pdsgetarrayrequestclass.cpp
+    PDS_protocol/pdsgetarrayrequestclass.cpp \
+    PDS_protocol/pdsGetArrayResponseClass.cpp
 
 
 
@@ -87,7 +88,8 @@ HEADERS += \
     PDS_protocol/pdssavereferenceforkrequestclass.h \
     PDS_protocol/pdssavereferenceforkresponseclass.h \
     PDS_protocol/arrayid.h \
-    PDS_protocol/pdsgetarrayrequestclass.h
+    PDS_protocol/pdsgetarrayrequestclass.h \
+    PDS_protocol/pdsGetArrayResponseClass.h
 
 
 

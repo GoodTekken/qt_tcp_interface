@@ -49,9 +49,11 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                             break;
 
                                         case PDS_GET_ARRAY_COMMAND:
+                                            pds_get_array_command(array);
                                             break;
 
                                         case PDS_SAVE_REFERENCE_FORKS_COMMAND:
+
                                             break;
 
                                         case PDS_GET_RACK_COMMAND:
@@ -221,6 +223,7 @@ void ServerWidget::pds_get_rack_command(QByteArray array)
     }
 }
 
+
 void ServerWidget::pds_vol_check_command(QByteArray array)
 {
     pdsVolCheckRequestClass volCheckRequest(array);
@@ -242,4 +245,20 @@ void ServerWidget::pds_vol_check_command(QByteArray array)
     QByteArray sendArray;
     sendArray = pdsVolCheckResponse.ToArray();
     tcpSocket->write(sendArray);
+}
+void ServerWidget::pds_get_array_command(QByteArray array)
+{
+    char test[10]={'h','e','l','l','o','w','o','r','l','d'};
+    arrayType tp={2,5,1,0};
+    pdsGetArrayResponseClass response{10,test,&tp};
+    QByteArray arr;
+    arr.clear();
+    arr=response.toArray();
+    pdsGetArrayResponseClass fin{arr};
+    arr.clear();
+    arr=fin.toArray();
+    qDebug("no array");
+    //arr.clear();
+    //arr=temp.toArray();
+
 }
