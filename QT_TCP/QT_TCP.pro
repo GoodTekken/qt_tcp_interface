@@ -59,7 +59,8 @@ SOURCES += \
     PDS_protocol/pdsSaveConfigResponseClass.cpp \
     PDS_protocol/pdsResetConfigRequestClass.cpp \
     PDS_protocol/pdsResetConfigResponseClass.cpp \
-    PDS_protocol/pdsSaveExtrinsicsRequestClass.cpp
+    PDS_protocol/pdsSaveExtrinsicsRequestClass.cpp \
+    PDS_protocol/pdsSaveExtrinsicsResponseClass.cpp
 
 
 
@@ -99,7 +100,8 @@ HEADERS += \
     PDS_protocol/pdsSaveConfigResponseClass.h \
     PDS_protocol/pdsResetConfigRequestClass.h \
     PDS_protocol/pdsResetConfigResponseClass.h \
-    PDS_protocol/pdsSaveExtrinsicsRequestClass.h
+    PDS_protocol/pdsSaveExtrinsicsRequestClass.h \
+    PDS_protocol/pdsSaveExtrinsicsResponseClass.h
 
 
 

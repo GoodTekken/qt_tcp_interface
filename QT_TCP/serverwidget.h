@@ -40,6 +40,11 @@ public:
 
     void pds_get_array_command(QByteArray array);
 
+    void pds_save_config_command(QByteArray array);
+
+    void pds_reset_config_command(QByteArray array);
+
+    void pds_save_extrinsics_command(QByteArray array);
 private slots:
     void on_buttonSend_clicked();
 

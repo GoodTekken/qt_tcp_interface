@@ -27,4 +27,10 @@
 #include"PDS_protocol/pdsGetArrayRequestClass.h"
 #include"PDS_protocol/arrayid.h"
 #include"PDS_protocol/pdsGetArrayResponseClass.h"
+#include"PDS_protocol/pdsSaveConfigRequestClass.h"
+#include"PDS_protocol/pdsSaveConfigResponseClass.h"
+#include"PDS_protocol/pdsResetConfigRequestClass.h"
+#include"PDS_protocol/pdsResetConfigResponseClass.h"
+#include"PDS_protocol/pdsSaveExtrinsicsRequestClass.h"
+#include"PDS_protocol/pdsSaveExtrinsicsResponseClass.h"
 #endif // PDSPROTOCOl_H

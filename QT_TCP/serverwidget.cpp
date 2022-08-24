@@ -71,12 +71,15 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                             break;
 
                                         case PDS_SAVE_CONFIG_COMMAND:
+                                            pds_save_config_command(array);
                                             break;
 
                                         case PDS_RESET_CONFIG_COMMAND:
+                                            pds_reset_config_command(array);
                                             break;
 
                                         case PDS_SAVE_EXTRINSICS_COMMAND:
+                                            pds_save_extrinsics_command(array);
                                             break;
 
                                         default:
@@ -262,3 +265,64 @@ void ServerWidget::pds_get_array_command(QByteArray array)
     //arr=temp.toArray();
 
 }
+void ServerWidget::pds_save_config_command(QByteArray array)
+{
+
+    pdsSaveConfigRequestClass req{array};
+    QByteArray arr=req.toArray();
+    pdsSaveConfigResponseClass res{};
+    arr.clear();
+    arr=res.toArray();
+    pdsSaveConfigResponseClass fin{arr};
+    /*
+
+
+    here call the function to save configs!!!!
+
+     */
+    tcpSocket->write("save config!");
+
+
+
+
+}
+void ServerWidget::pds_reset_config_command(QByteArray array)
+{
+    //pdsResetConfigRequestClass req{array};
+    QByteArray arr;
+    //pdsResetConfigRequestClass fin{arr};
+
+    pdsResetConfigResponseClass response{};
+    arr=response.toArray();
+    pdsResetConfigResponseClass fin{arr};
+    /*
+    here is code reset configs
+
+
+
+    */
+    qDebug("reset success!!");
+
+
+
+
+
+}
+
+void ServerWidget::pds_save_extrinsics_command(QByteArray array)
+{
+    //pdsSaveExtrinsicsRequestClass req{array};
+
+    QByteArray arr;
+   pdsSaveExtrinsicsResponseClass res{};
+    arr=res.toArray();
+    pdsSaveExtrinsicsResponseClass fin{arr};
+
+    qDebug("save success!!");
+
+
+
+
+
+}
+
