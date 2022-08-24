@@ -54,8 +54,7 @@ SOURCES += \
     AGVMessage/CommunicationClass.cpp \
     Math/UserMatrix.cpp \
     PDS_protocol/pdsNoopclass.cpp \
-    PDS_protocol/pdsGetArrayResponseClass.cpp
-
+    PDS_protocol/pdsSaveConfigRequestClass.cpp
 
 
 HEADERS += \
@@ -89,7 +88,8 @@ HEADERS += \
     AGVMessage/CoordinateClass.h \
     main.h \
     PDS_protocol/arrayid.h \
-    PDS_protocol/pdsGetArrayResponseClass.h
+    PDS_protocol/pdsSaveConfigRequestClass.h
+
 
 
 
