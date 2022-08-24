@@ -16,7 +16,7 @@
 #include "PDS_protocol/pdsPalletCoordinateClass.h"
 
 #include "PDS_protocol/pdsRackRequestClass.h"
-//#include "PDS_protocol/pdsRackResponseClass.h"
+#include "PDS_protocol/pdsRackResponseClass.h"
 #include "PDS_protocol/pdsRackCoordinateClass.h"
 
 #include"PDS_protocol/pdssavereferenceforkrequestclass.h"
