@@ -22,9 +22,9 @@
 #include "PDS_protocol/pdsVolCheckRequestClass.h"
 #include "PDS_protocol/pdsVolCheckResponseClass.h"
 
-#include"PDS_protocol/pdssavereferenceforkrequestclass.h"
-#include"PDS_protocol/pdssavereferenceforkresponseclass.h"
-#include"PDS_protocol/pdsgetarrayrequestclass.h"
+#include"PDS_protocol/pdsSaveReferenceForkRequestclass.h"
+#include"PDS_protocol/pdsSaveReferenceForkResponseclass.h"
+#include"PDS_protocol/pdsGetArrayRequestClass.h"
 #include"PDS_protocol/arrayid.h"
 #include"PDS_protocol/pdsGetArrayResponseClass.h"
 #endif // PDSPROTOCOl_H

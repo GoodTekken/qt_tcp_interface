@@ -30,6 +30,7 @@ CONFIG += c++14
 
 SOURCES += \
     Function/function.cpp \
+    PDS_protocol/pdsGetArrayRequestClass.cpp \
     PDS_protocol/pdsPalletCoordinateClass.cpp \
     PDS_protocol/pdsPalletRequestClass.cpp \
     PDS_protocol/pdsPalletResponseClass.cpp \
@@ -37,6 +38,8 @@ SOURCES += \
     PDS_protocol/pdsRackCoordinateClass.cpp \
     PDS_protocol/pdsRackRequestClass.cpp \
     PDS_protocol/pdsRackResponseClass.cpp \
+    PDS_protocol/pdsSaveReferenceForkRequestclass.cpp \
+    PDS_protocol/pdsSaveReferenceForkResponseclass.cpp \
     PDS_protocol/pdsVolCheckRequestClass.cpp \
     PDS_protocol/pdsVolCheckResponseClass.cpp \
     clientPDS.cpp \
@@ -51,9 +54,6 @@ SOURCES += \
     AGVMessage/CommunicationClass.cpp \
     Math/UserMatrix.cpp \
     PDS_protocol/pdsNoopclass.cpp \
-    PDS_protocol/pdssavereferenceforkrequestclass.cpp \
-    PDS_protocol/pdssavereferenceforkresponseclass.cpp \
-    PDS_protocol/pdsgetarrayrequestclass.cpp \
     PDS_protocol/pdsGetArrayResponseClass.cpp
 
 
@@ -62,6 +62,7 @@ HEADERS += \
     Function/function.h \
     PDS_protocol/pdsEnumCode.h \
     PDS_protocol/pdsErrorCode.h \
+    PDS_protocol/pdsGetArrayRequestClass.h \
     PDS_protocol/pdsNoopClass.h \
     PDS_protocol/pdsPalletCoordinateClass.h \
     PDS_protocol/pdsPalletRequestClass.h \
@@ -70,6 +71,8 @@ HEADERS += \
     PDS_protocol/pdsRackCoordinateClass.h \
     PDS_protocol/pdsRackRequestClass.h \
     PDS_protocol/pdsRackResponseClass.h \
+    PDS_protocol/pdsSaveReferenceForkRequestclass.h \
+    PDS_protocol/pdsSaveReferenceForkResponseclass.h \
     PDS_protocol/pdsStruct.h \
     PDS_protocol/pdsVolCheckRequestClass.h \
     PDS_protocol/pdsVolCheckResponseClass.h \
@@ -85,10 +88,7 @@ HEADERS += \
     Math/UserMatrix.h \
     AGVMessage/CoordinateClass.h \
     main.h \
-    PDS_protocol/pdssavereferenceforkrequestclass.h \
-    PDS_protocol/pdssavereferenceforkresponseclass.h \
     PDS_protocol/arrayid.h \
-    PDS_protocol/pdsgetarrayrequestclass.h \
     PDS_protocol/pdsGetArrayResponseClass.h
 
 

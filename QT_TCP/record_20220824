@@ -18,7 +18,7 @@ case PDS_GET_RACK_COMMAND:                    //------->  4  <----------(finishe
     pds_get_rack_response_command(array);
     break;
 
-case PDS_VOL_CHECK_COMMAND:                   //------->  5  <----------(     )
+case PDS_VOL_CHECK_COMMAND:                   //------->  5  <----------(finished)
     break;
 
 case PDS_GET_CONFIG_COMMAND:                  //------->  7  <----------(     )

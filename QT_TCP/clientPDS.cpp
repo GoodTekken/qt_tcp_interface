@@ -181,12 +181,13 @@ void ClientPDS::on_pushButtonSendCommand_clicked()
 //    tcpSocket->write(array);
 
 //    (command 5)
-    QByteArray array;
-    pds_point min = {.x=-1.1,.y=-2.2,.z=-3.3};
-    pds_point max = {.x=1.1,.y=2.2,.z=3.3};
-    pdsVolCheckRequestClass volCheck(min,max);
-    array = volCheck.ToArray();
-    tcpSocket->write(array);
+//    QByteArray array;
+//    pds_point min = {.x=-1.1,.y=-2.2,.z=-3.3};
+//    pds_point max = {.x=1.1,.y=2.2,.z=3.3};
+//    pdsVolCheckRequestClass volCheck(min,max);
+//    array = volCheck.ToArray();
+//    tcpSocket->write(array);
+
 
 }
 

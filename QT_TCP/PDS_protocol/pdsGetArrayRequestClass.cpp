@@ -1,4 +1,4 @@
-#include "pdsgetarrayrequestclass.h"
+#include "pdsGetArrayRequestClass.h"
 
 pdsGetArrayRequestClass::pdsGetArrayRequestClass()
 {
