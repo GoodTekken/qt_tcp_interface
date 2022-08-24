@@ -184,5 +184,38 @@ void ServerWidget::pds_get_rack_command(QByteArray array)
                 " clearingHeight:"+QString::number(rackRequest.rackRequestStruct.clearingHeight)+  "\r\n"+
                 " strayLightFilter:"+QString::number(rackRequest.rackRequestStruct.strayLightFilter)+  "\r\n"+
                  " ";
-    ui->textEditRead->append(str);
+    qDebug("%s",qPrintable(str));
+
+    int errorCode = 0;
+    if(errorCode !=0 )
+    {
+        pdsRackResponseClass rackResponse;
+        rackResponse.response_failure(rackRequest.rackRequestStruct.commandID,errorCode);
+        QByteArray array;
+        array = rackResponse.ToFailureArray();
+        tcpSocket->write(array);
+    }
+    else
+    {
+        float elapsedTime = 100.1;
+        float confidence = 200.2;
+        pds_point pds_point = {.x=0.1,.y=0.2,.z=0.3};
+        pds_posture rack_posture = {.roll=0.875,.pitch=0.625,.yaw=-0.375};
+        uint8_t side = 12;
+        uint32_t flag = 13;
+
+        pdsRackCoordinateClass rackCoordinate(
+                                                elapsedTime,
+                                                confidence,
+                                                pds_point,
+                                                rack_posture,
+                                                side,
+                                                flag);
+
+        pdsRackResponseClass rackResponse;
+        rackResponse.response_success(rackCoordinate);
+        QByteArray array;
+        array = rackResponse.ToSuccessArray();
+        tcpSocket->write(array);
+    }
 }

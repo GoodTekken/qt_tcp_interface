@@ -2,3 +2,12 @@
 2,add pdsEnumCode.h in PDS_protocol directory
 3,modified severwidget.cpp to adapt diffent instruction.
 4,add pdsRackCoordinateClass
+----|
+    |_...
+    |pdsRackCoordinateClass.h
+    |pdsRackCoordinateClass.cpp
+    |pdsRackRequestClass.h
+    |pdsRackRequestClass.cpp
+    |pdsRackResponseClass.h
+    |pdsRackResponseClass.cpp
+

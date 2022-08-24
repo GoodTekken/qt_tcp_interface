@@ -173,8 +173,8 @@ void ClientPDS::on_pushButtonSendCommand_clicked()
     QByteArray array;
     uint32_t commandID = 4;
     float depthHint = 2.345;
-    pdsRackRequestClass palletRequest(commandID,depthHint);
-    array = palletRequest.ToArray();
+    pdsRackRequestClass rackRequest(commandID,depthHint);
+    array = rackRequest.ToArray();
     tcpSocket->write(array);
 }
 
@@ -224,5 +224,37 @@ void ClientPDS::pds_get_pallet_response_command(QByteArray array)
 
 void ClientPDS::pds_get_rack_response_command(QByteArray array)
 {
-    ;
+    int count = array.count();
+    if(count == 22)
+    {
+        pdsRackResponseClass rackResponse(array);
+        QString str= "commandID:"+QString::number(rackResponse.rackResponseFailureStruct.commandID) +
+                     " errorCode:"+QString::number(rackResponse.rackResponseFailureStruct.errorCode)+
+                     " len:"+QString::number(rackResponse.rackResponseFailureStruct.len);
+        ui->textEditRead->append(str);
+    }
+    else if(count == 59)
+    {
+        pdsRackResponseClass rackResponse(array);
+        QString str= "commandID:"+QString::number(rackResponse.rackResponseSuccessStruct.commandID) +"\r\n"+
+        " errorCode:"+QString::number(rackResponse.rackResponseSuccessStruct.errorCode)+"\r\n"+
+        " len:"+QString::number(rackResponse.rackResponseSuccessStruct.len)+"\r\n"+
+        " elapsedTime:"+QString::number(rackResponse.rackResponseSuccessStruct.elapsedTime)+"\r\n"+
+        " confidence:"+QString::number(rackResponse.rackResponseSuccessStruct.confidence)+"\r\n"+
+        " X:"+QString::number(rackResponse.rackResponseSuccessStruct.X)+"\r\n"+
+        " Y:"+QString::number(rackResponse.rackResponseSuccessStruct.Y)+"\r\n"+
+        " Z:"+QString::number(rackResponse.rackResponseSuccessStruct.Z)+"\r\n"+
+        " roll:"+QString::number(rackResponse.rackResponseSuccessStruct.roll)+"\r\n"+
+        " pitch:"+QString::number(rackResponse.rackResponseSuccessStruct.pitch)+"\r\n"+
+        " yaw:"+QString::number(rackResponse.rackResponseSuccessStruct.yaw)+"\r\n"
+        " side:"+QString::number(rackResponse.rackResponseSuccessStruct.side)+"\r\n"
+        " flag:"+QString::number(rackResponse.rackResponseSuccessStruct.flag)+"\r\n"
+                ;
+        ui->textEditRead->append(str);
+
+    }
+    else
+    {
+        ui->textEditRead->append(array);
+    }
 }
