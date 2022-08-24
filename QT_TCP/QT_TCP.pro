@@ -31,6 +31,8 @@ CONFIG += c++14
 SOURCES += \
     Function/function.cpp \
     PDS_protocol/pdsGetArrayRequestClass.cpp \
+    PDS_protocol/pdsGetConfigRequestClass.cpp \
+    PDS_protocol/pdsGetConfigResponseClass.cpp \
     PDS_protocol/pdsPalletCoordinateClass.cpp \
     PDS_protocol/pdsPalletRequestClass.cpp \
     PDS_protocol/pdsPalletResponseClass.cpp \
@@ -63,6 +65,8 @@ HEADERS += \
     PDS_protocol/pdsEnumCode.h \
     PDS_protocol/pdsErrorCode.h \
     PDS_protocol/pdsGetArrayRequestClass.h \
+    PDS_protocol/pdsGetConfigRequestClass.h \
+    PDS_protocol/pdsGetConfigResponseClass.h \
     PDS_protocol/pdsNoopClass.h \
     PDS_protocol/pdsPalletCoordinateClass.h \
     PDS_protocol/pdsPalletRequestClass.h \

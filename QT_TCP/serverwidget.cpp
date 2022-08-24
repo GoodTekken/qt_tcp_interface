@@ -65,6 +65,7 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                             break;
 
                                         case PDS_GET_CONFIG_COMMAND:
+                                            pds_get_config_command(array);
                                             break;
 
                                         case PDS_SET_CONFIG_COMMAND:
@@ -262,3 +263,26 @@ void ServerWidget::pds_get_array_command(QByteArray array)
     //arr=temp.toArray();
 
 }
+
+void ServerWidget::pds_get_config_command(QByteArray array)
+{
+    pdsGetConfigRequestClass pdsGetConfigRequest(array);
+    QString str= "commandID:"+QString::number(pdsGetConfigRequest.getConfigRequestStruct.commandID) + "\r\n"+
+                " argsLen:"+QString::number(pdsGetConfigRequest.getConfigRequestStruct.argsLen)+ "\r\n"+
+                 " ";
+    qDebug("%s",qPrintable(str));
+
+//    pdsGetConfigResponseClass pdsGetConfigResponse;
+//    QByteArray sendArray;
+//    sendArray = pdsGetConfigResponse.ToArray();
+//    tcpSocket->write(sendArray);
+
+    uint32_t arrayLen = 6;
+    char rawArrayData[6] = {1,2,3,4,5,6};
+    pdsGetConfigResponseClass pdsGetConfigResponse(arrayLen,rawArrayData);
+    QByteArray sendArray;
+    sendArray = pdsGetConfigResponse.ToArray();
+    tcpSocket->write(sendArray);
+
+}
+
