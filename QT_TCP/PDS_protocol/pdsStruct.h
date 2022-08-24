@@ -188,7 +188,7 @@ typedef  struct
 
 typedef  struct
 {
-    //total 42 bytes
+    //total 43 bytes
     char     startSequnce[4];      //4 byte  (The fixed byte string: (115, 116, 97, 114) aka (‘s’, ‘t’, ‘a’, ‘r’))
     uint32_t commandID;            //4 byte  (value: 5,The command id of the request being sent)
     uint32_t argsLen;              //4 byte  (value: 25,The size in bytes of the arguments sent to the command)
@@ -198,6 +198,7 @@ typedef  struct
     float   ymax;                  //4 byte  (Max y in VOI (meters, camera frame))
     float   zmin;                  //4 byte  (Min z in VOI (meters, camera frame))
     float   zmax;                  //4 byte  (Max z in VOI (meters, camera frame))
+    uint8_t strayLightFilter;      //1 byte  (Flag to turn on/off stray light filtering)
     char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
 }volCheckRequest;
 
@@ -208,7 +209,7 @@ typedef  struct
     uint32_t commandID;            //4 byte  (value: 5,The command id of the request being sent)
     int32_t errorCode;             //4 byte  (value: Unless the return code is PDS_NO_ERRORS, the caller should not attempt the pick)
     uint32_t len;                  //4 byte  (value: 6)
-    float   elapseTime;            //4 byte (Elapsed time to compute the volume)
+    float   elapsedTime;            //4 byte (Elapsed time to compute the volume)
     int32_t Npix;                  //4 byte (Number of pixels in the VOI)
     char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
 }volCheckResponse;

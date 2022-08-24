@@ -1,4 +1,4 @@
-#include "PDS_protocol/pdsNoopclass.h"
+#include "PDS_protocol/pdsNoopClass.h"
 #include<cstring>
 #include<QObject>
 pdsNoopRequest::pdsNoopRequest()

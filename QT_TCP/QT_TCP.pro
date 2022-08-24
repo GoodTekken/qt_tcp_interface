@@ -37,6 +37,8 @@ SOURCES += \
     PDS_protocol/pdsRackCoordinateClass.cpp \
     PDS_protocol/pdsRackRequestClass.cpp \
     PDS_protocol/pdsRackResponseClass.cpp \
+    PDS_protocol/pdsVolCheckRequestClass.cpp \
+    PDS_protocol/pdsVolCheckResponseClass.cpp \
     clientPDS.cpp \
         main.cpp \
         serverwidget.cpp \
@@ -59,6 +61,7 @@ HEADERS += \
     Function/function.h \
     PDS_protocol/pdsEnumCode.h \
     PDS_protocol/pdsErrorCode.h \
+    PDS_protocol/pdsNoopClass.h \
     PDS_protocol/pdsPalletCoordinateClass.h \
     PDS_protocol/pdsPalletRequestClass.h \
     PDS_protocol/pdsPalletResponseClass.h \
@@ -67,6 +70,8 @@ HEADERS += \
     PDS_protocol/pdsRackRequestClass.h \
     PDS_protocol/pdsRackResponseClass.h \
     PDS_protocol/pdsStruct.h \
+    PDS_protocol/pdsVolCheckRequestClass.h \
+    PDS_protocol/pdsVolCheckResponseClass.h \
     clientPDS.h \
         serverwidget.h \
     clientwidget.h \
@@ -79,7 +84,6 @@ HEADERS += \
     Math/UserMatrix.h \
     AGVMessage/CoordinateClass.h \
     main.h \
-    PDS_protocol/pdsNoopclass.h \
     PDS_protocol/pdssavereferenceforkrequestclass.h \
     PDS_protocol/pdssavereferenceforkresponseclass.h \
     PDS_protocol/arrayid.h \
@@ -128,7 +132,8 @@ DISTFILES += \
     record_20220818 \
     record_20220819 \
     record_20220822 \
-    record_20220823
+    record_20220823 \
+    record_20220824
 
 
 

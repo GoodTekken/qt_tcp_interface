@@ -59,6 +59,7 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                             break;
 
                                         case PDS_VOL_CHECK_COMMAND:
+                                            pds_vol_check_command(array);
                                             break;
 
                                         case PDS_GET_CONFIG_COMMAND:
@@ -218,4 +219,27 @@ void ServerWidget::pds_get_rack_command(QByteArray array)
         array = rackResponse.ToSuccessArray();
         tcpSocket->write(array);
     }
+}
+
+void ServerWidget::pds_vol_check_command(QByteArray array)
+{
+    pdsVolCheckRequestClass volCheckRequest(array);
+    QString str= "commandID:"+QString::number(volCheckRequest.volCheckRequestStruct.commandID) + "\r\n"+
+                " argsLen:"+QString::number(volCheckRequest.volCheckRequestStruct.argsLen)+ "\r\n"+
+                " xmin:"+QString::number(volCheckRequest.volCheckRequestStruct.xmin)+ "\r\n"+
+                " xmax:"+QString::number(volCheckRequest.volCheckRequestStruct.xmax)+  "\r\n"+
+                " ymin:"+QString::number(volCheckRequest.volCheckRequestStruct.ymin)+  "\r\n"+
+                " ymax:"+QString::number(volCheckRequest.volCheckRequestStruct.ymax)+  "\r\n"+
+                " zmin:"+QString::number(volCheckRequest.volCheckRequestStruct.zmin)+  "\r\n"+
+                " zmax:"+QString::number(volCheckRequest.volCheckRequestStruct.zmax)+  "\r\n"+
+                " strayLightFilter:"+QString::number(volCheckRequest.volCheckRequestStruct.strayLightFilter)+  "\r\n"+
+                 " ";
+    qDebug("%s",qPrintable(str));
+
+    int errorCode = -1001;
+    int Npix = 2002;
+    pdsVolCheckResponseClass pdsVolCheckResponse(errorCode,Npix);
+    QByteArray sendArray;
+    sendArray = pdsVolCheckResponse.ToArray();
+    tcpSocket->write(sendArray);
 }

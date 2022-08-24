@@ -1,0 +1,37 @@
+Command List:
+
+case PDS_HEARTBEAT_COMMAND                    //------->  0  <----------(finished)
+    qDebug("command:%d",command);
+    break;
+
+case PDS_GET_PALLET_COMMAND:                  //------->  1  <----------(finished)
+    pds_get_pallet_response_command(array);
+    break;
+
+case PDS_GET_ARRAY_COMMAND:                   //------->  2  <----------(finished)
+    break;
+
+case PDS_SAVE_REFERENCE_FORKS_COMMAND:        //------->  3  <----------(finished)
+    break;
+
+case PDS_GET_RACK_COMMAND:                    //------->  4  <----------(finished)
+    pds_get_rack_response_command(array);
+    break;
+
+case PDS_VOL_CHECK_COMMAND:                   //------->  5  <----------(     )
+    break;
+
+case PDS_GET_CONFIG_COMMAND:                  //------->  7  <----------(     )
+    break;
+
+case PDS_SET_CONFIG_COMMAND:                  //------->  8  <----------(     )
+    break;
+
+case PDS_SAVE_CONFIG_COMMAND:                 //------->  9  <----------(     )
+    break;
+
+case PDS_RESET_CONFIG_COMMAND:                //------->  10  <----------(     )
+    break;
+
+case PDS_SAVE_EXTRINSICS_COMMAND:             //------->  11  <----------(     )
+    break;

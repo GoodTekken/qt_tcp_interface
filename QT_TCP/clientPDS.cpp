@@ -47,6 +47,7 @@ ClientPDS::ClientPDS(QWidget *parent) :
                                 break;
 
                             case PDS_VOL_CHECK_COMMAND:
+                                pds_vol_check_response_command(array);
                                 break;
 
                             case PDS_GET_CONFIG_COMMAND:
@@ -163,6 +164,7 @@ void ClientPDS::on_pushButtonSendGetPallet_clicked()
 void ClientPDS::on_pushButtonSendCommand_clicked()
 {
 //    For Example:
+//    (command 1)
 //    QByteArray array;
 //    uint32_t commandID = 1;
 //    uint16_t palletType = 2;
@@ -170,12 +172,22 @@ void ClientPDS::on_pushButtonSendCommand_clicked()
 //    array = palletRequest.ToArray();
 //    tcpSocket->write(array);
 
+//    (command 4)
+//    QByteArray array;
+//    uint32_t commandID = 4;
+//    float depthHint = 2.345;
+//    pdsRackRequestClass rackRequest(commandID,depthHint);
+//    array = rackRequest.ToArray();
+//    tcpSocket->write(array);
+
+//    (command 5)
     QByteArray array;
-    uint32_t commandID = 4;
-    float depthHint = 2.345;
-    pdsRackRequestClass rackRequest(commandID,depthHint);
-    array = rackRequest.ToArray();
+    pds_point min = {.x=-1.1,.y=-2.2,.z=-3.3};
+    pds_point max = {.x=1.1,.y=2.2,.z=3.3};
+    pdsVolCheckRequestClass volCheck(min,max);
+    array = volCheck.ToArray();
     tcpSocket->write(array);
+
 }
 
 
@@ -257,4 +269,16 @@ void ClientPDS::pds_get_rack_response_command(QByteArray array)
     {
         ui->textEditRead->append(array);
     }
+}
+
+void ClientPDS::pds_vol_check_response_command(QByteArray array)
+{
+    pdsVolCheckResponseClass volCheckResponse(array);
+    QString str= "commandID:"+QString::number(volCheckResponse.volCheckResponseStruct.commandID) +"\r\n"+
+    " errorCode:"+QString::number(volCheckResponse.volCheckResponseStruct.errorCode)+"\r\n"+
+    " len:"+QString::number(volCheckResponse.volCheckResponseStruct.len)+"\r\n"+
+    " elapsedTime:"+QString::number(volCheckResponse.volCheckResponseStruct.elapsedTime)+"\r\n"+
+    " Npix:"+QString::number(volCheckResponse.volCheckResponseStruct.Npix)+"\r\n"
+            ;
+    ui->textEditRead->append(str);
 }

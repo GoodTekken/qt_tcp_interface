@@ -11,7 +11,7 @@
 #include "Spline/ExternalPathCoordinateSet.h"
 #include "Math/UserMatrix.h"
 #include "main.h"
-#include "PDS_protocol/pdsNoopclass.h"
+#include "PDS_protocol/pdsNoopClass.h"
 //#define qtcout qDebug()<<"["<<__FILE__<<":"<<__LINE__<<"]";
 
 namespace Ui {
@@ -27,6 +27,7 @@ public:
     ~ClientPDS();
     void pds_get_pallet_response_command(QByteArray array);
     void pds_get_rack_response_command(QByteArray array);
+    void pds_vol_check_response_command(QByteArray array);
 
 
 private slots:
