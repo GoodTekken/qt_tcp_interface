@@ -51,6 +51,7 @@ ClientPDS::ClientPDS(QWidget *parent) :
                                 break;
 
                             case PDS_GET_CONFIG_COMMAND:
+                                pds_get_config_response_command(array);
                                 break;
 
                             case PDS_SET_CONFIG_COMMAND:
@@ -188,7 +189,11 @@ void ClientPDS::on_pushButtonSendCommand_clicked()
 //    array = volCheck.ToArray();
 //    tcpSocket->write(array);
 
-
+//    (command 7)
+    QByteArray array;
+    pdsGetConfigRequestClass pdsGetConfigRequest;
+    array=pdsGetConfigRequest.ToArray();
+    tcpSocket->write(array);
 }
 
 
@@ -281,5 +286,15 @@ void ClientPDS::pds_vol_check_response_command(QByteArray array)
     " elapsedTime:"+QString::number(volCheckResponse.volCheckResponseStruct.elapsedTime)+"\r\n"+
     " Npix:"+QString::number(volCheckResponse.volCheckResponseStruct.Npix)+"\r\n"
             ;
+    ui->textEditRead->append(str);
+}
+
+void ClientPDS::pds_get_config_response_command(QByteArray array)
+{
+    pdsGetConfigResponseClass pdsGetConfigResponse(array);
+    QString str= "commandID:"+QString::number(pdsGetConfigResponse.getConfigResponseStruct.commandID) +"\r\n"+
+    " errorCode:"+QString::number(pdsGetConfigResponse.getConfigResponseStruct.errorCode)+"\r\n"+
+    " len:"+QString::number(pdsGetConfigResponse.getConfigResponseStruct.len)+"\r\n"+
+            " ";
     ui->textEditRead->append(str);
 }
