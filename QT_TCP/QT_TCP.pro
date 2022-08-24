@@ -54,8 +54,8 @@ SOURCES += \
     AGVMessage/CommunicationClass.cpp \
     Math/UserMatrix.cpp \
     PDS_protocol/pdsNoopclass.cpp \
-    PDS_protocol/pdsSaveConfigRequestClass.cpp
-
+    PDS_protocol/pdsSaveConfigRequestClass.cpp \
+    PDS_protocol/pdsGetArrayResponseClass.cpp
 
 HEADERS += \
     Function/function.h \
