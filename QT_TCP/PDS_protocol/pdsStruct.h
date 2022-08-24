@@ -338,6 +338,12 @@ typedef  struct
     char     stopSequence[6];      //6 byte  (The fixed byte string: (115, 116, 111, 112, 13, 10) aka (‘s’, ‘t’, ‘o’, ‘p’, ‘\r’, ‘\n’))
 }noopResponse;
 
-
+typedef struct
+{
+    int32_t row;
+    int32_t column;
+    int32_t channels;
+    int32_t Pixeltype;
+}arrayType ;
 #pragma pack()		//结束结构体对齐设置
 #endif // PDSSTRUCT_H

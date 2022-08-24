@@ -23,5 +23,5 @@
 #include"PDS_protocol/pdssavereferenceforkresponseclass.h"
 #include"PDS_protocol/pdsgetarrayrequestclass.h"
 #include"PDS_protocol/arrayid.h"
-
+#include"PDS_protocol/pdsGetArrayResponseClass.h"
 #endif // PDSPROTOCOl_H
