@@ -40,6 +40,8 @@ public:
 
     void pds_get_config_command(QByteArray array);
 
+    void pds_set_config_command(QByteArray array);
+
 private slots:
     void on_buttonSend_clicked();
 

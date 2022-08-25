@@ -31,5 +31,8 @@
 #include"PDS_protocol/pdsGetConfigRequestClass.h"
 #include"PDS_protocol/pdsGetConfigResponseClass.h"
 
+#include"PDS_protocol/pdsSetConfigRequestClass.h"
+#include"PDS_protocol/pdsSetConfigResponseClass.h"
+
 
 #endif // PDSPROTOCOl_H

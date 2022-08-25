@@ -13,12 +13,13 @@ pdsGetConfigResponseClass::pdsGetConfigResponseClass()
 
 pdsGetConfigResponseClass::pdsGetConfigResponseClass(uint32_t arrayLen,char*rawArrayData)
 {
+    this->arrayLen=arrayLen;
+
     strncpy(getConfigResponseStruct.startSequnce,seqStart,4);
     getConfigResponseStruct.commandID=7;
     getConfigResponseStruct.errorCode=1;
     getConfigResponseStruct.len=6+arrayLen;
     strncpy(getConfigResponseStruct.stopSequence,seqEnd,6);
-    this->arrayLen=arrayLen;
     arrayData=new char[arrayLen];
 
     for (uint32_t i=0;i< arrayLen;i++)

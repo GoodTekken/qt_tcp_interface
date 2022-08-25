@@ -21,16 +21,16 @@ case PDS_GET_RACK_COMMAND:                    //------->  4  <----------(finishe
 case PDS_VOL_CHECK_COMMAND:                   //------->  5  <----------(finished)
     break;
 
-case PDS_GET_CONFIG_COMMAND:                  //------->  7  <----------(     )
+case PDS_GET_CONFIG_COMMAND:                  //------->  7  <----------(finished)
     break;
 
-case PDS_SET_CONFIG_COMMAND:                  //------->  8  <----------(     )
+case PDS_SET_CONFIG_COMMAND:                  //------->  8  <----------(finished)
     break;
 
-case PDS_SAVE_CONFIG_COMMAND:                 //------->  9  <----------(     )
+case PDS_SAVE_CONFIG_COMMAND:                 //------->  9  <----------(finished)
     break;
 
-case PDS_RESET_CONFIG_COMMAND:                //------->  10  <----------(     )
+case PDS_RESET_CONFIG_COMMAND:                //------->  10  <----------(finished)
     break;
 
 case PDS_SAVE_EXTRINSICS_COMMAND:             //------->  11  <----------(     )
