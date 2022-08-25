@@ -55,6 +55,7 @@ ClientPDS::ClientPDS(QWidget *parent) :
                                 break;
 
                             case PDS_SET_CONFIG_COMMAND:
+                                pds_set_config_response_command(array);
                                 break;
 
                             case PDS_SAVE_CONFIG_COMMAND:
@@ -190,10 +191,22 @@ void ClientPDS::on_pushButtonSendCommand_clicked()
 //    tcpSocket->write(array);
 
 //    (command 7)
-    QByteArray array;
-    pdsGetConfigRequestClass pdsGetConfigRequest;
-    array=pdsGetConfigRequest.ToArray();
-    tcpSocket->write(array);
+//    QByteArray array;
+//    pdsGetConfigRequestClass pdsGetConfigRequest;
+//    array=pdsGetConfigRequest.ToArray();
+//    tcpSocket->write(array);
+//    (command 8)
+//    QByteArray array;
+//    pdsSetConfigRequestClass pdsSetConfigRequest;
+//    array=pdsSetConfigRequest.ToArray();
+//    tcpSocket->write(array);
+        uint32_t arrayLen = 6;
+        char rawArrayData[6] = {1,2,3,4,5,6};
+        pdsSetConfigRequestClass pdsSetConfigRequest(arrayLen,rawArrayData);
+        QByteArray sendArray;
+        sendArray = pdsSetConfigRequest.ToArray();
+        tcpSocket->write(sendArray);
+
 }
 
 
@@ -295,6 +308,16 @@ void ClientPDS::pds_get_config_response_command(QByteArray array)
     QString str= "commandID:"+QString::number(pdsGetConfigResponse.getConfigResponseStruct.commandID) +"\r\n"+
     " errorCode:"+QString::number(pdsGetConfigResponse.getConfigResponseStruct.errorCode)+"\r\n"+
     " len:"+QString::number(pdsGetConfigResponse.getConfigResponseStruct.len)+"\r\n"+
+            " ";
+    ui->textEditRead->append(str);
+}
+
+void ClientPDS::pds_set_config_response_command(QByteArray array)
+{
+    pdsSetConfigResponseClass pdsSetConfigResponse(array);
+    QString str= "commandID:"+QString::number(pdsSetConfigResponse.setConfigResponseStruct.commandID) +"\r\n"+
+    " errorCode:"+QString::number(pdsSetConfigResponse.setConfigResponseStruct.errorCode)+"\r\n"+
+    " len:"+QString::number(pdsSetConfigResponse.setConfigResponseStruct.len)+"\r\n"+
             " ";
     ui->textEditRead->append(str);
 }

@@ -37,5 +37,8 @@
 #include"PDS_protocol/pdsResetConfigResponseClass.h"
 #include"PDS_protocol/pdsSaveExtrinsicsRequestClass.h"
 #include"PDS_protocol/pdsSaveExtrinsicsResponseClass.h"
+#include"PDS_protocol/pdsSetConfigRequestClass.h"
+#include"PDS_protocol/pdsSetConfigResponseClass.h"
+
 
 #endif // PDSPROTOCOl_H

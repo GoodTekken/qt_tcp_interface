@@ -40,8 +40,16 @@ SOURCES += \
     PDS_protocol/pdsRackCoordinateClass.cpp \
     PDS_protocol/pdsRackRequestClass.cpp \
     PDS_protocol/pdsRackResponseClass.cpp \
+    PDS_protocol/pdsResetConfigRequestClass.cpp \
+    PDS_protocol/pdsResetConfigResponseClass.cpp \
+    PDS_protocol/pdsSaveConfigRequestClass.cpp \
+    PDS_protocol/pdsSaveConfigResponseClass.cpp \
+    PDS_protocol/pdsSaveExtrinsicsRequestClass.cpp \
+    PDS_protocol/pdsSaveExtrinsicsResponseClass.cpp \
     PDS_protocol/pdsSaveReferenceForkRequestclass.cpp \
     PDS_protocol/pdsSaveReferenceForkResponseclass.cpp \
+    PDS_protocol/pdsSetConfigRequestClass.cpp \
+    PDS_protocol/pdsSetConfigResponseClass.cpp \
     PDS_protocol/pdsVolCheckRequestClass.cpp \
     PDS_protocol/pdsVolCheckResponseClass.cpp \
     clientPDS.cpp \
@@ -56,15 +64,7 @@ SOURCES += \
     AGVMessage/CommunicationClass.cpp \
     Math/UserMatrix.cpp \
     PDS_protocol/pdsNoopclass.cpp \
-    PDS_protocol/pdsSaveConfigRequestClass.cpp \
-    PDS_protocol/pdsGetArrayResponseClass.cpp \
-    PDS_protocol/pdsSaveConfigResponseClass.cpp \
-    PDS_protocol/pdsResetConfigRequestClass.cpp \
-    PDS_protocol/pdsResetConfigResponseClass.cpp \
-    PDS_protocol/pdsSaveExtrinsicsRequestClass.cpp \
-    PDS_protocol/pdsSaveExtrinsicsResponseClass.cpp
-
-
+    PDS_protocol/pdsGetArrayResponseClass.cpp
 
 HEADERS += \
     Function/function.h \
@@ -73,7 +73,6 @@ HEADERS += \
     PDS_protocol/pdsGetArrayRequestClass.h \
     PDS_protocol/pdsGetConfigRequestClass.h \
     PDS_protocol/pdsGetConfigResponseClass.h \
-    PDS_protocol/pdsGetArrayResponseClass.h \
     PDS_protocol/pdsNoopClass.h \
     PDS_protocol/pdsPalletCoordinateClass.h \
     PDS_protocol/pdsPalletRequestClass.h \
@@ -82,8 +81,16 @@ HEADERS += \
     PDS_protocol/pdsRackCoordinateClass.h \
     PDS_protocol/pdsRackRequestClass.h \
     PDS_protocol/pdsRackResponseClass.h \
+    PDS_protocol/pdsResetConfigRequestClass.h \
+    PDS_protocol/pdsResetConfigResponseClass.h \
+    PDS_protocol/pdsSaveConfigRequestClass.h \
+    PDS_protocol/pdsSaveConfigResponseClass.h \
+    PDS_protocol/pdsSaveExtrinsicsRequestClass.h \
+    PDS_protocol/pdsSaveExtrinsicsResponseClass.h \
     PDS_protocol/pdsSaveReferenceForkRequestclass.h \
     PDS_protocol/pdsSaveReferenceForkResponseclass.h \
+    PDS_protocol/pdsSetConfigRequestClass.h \
+    PDS_protocol/pdsSetConfigResponseClass.h \
     PDS_protocol/pdsStruct.h \
     PDS_protocol/pdsVolCheckRequestClass.h \
     PDS_protocol/pdsVolCheckResponseClass.h \
@@ -100,12 +107,6 @@ HEADERS += \
     AGVMessage/CoordinateClass.h \
     main.h \
     PDS_protocol/arrayid.h \
-    PDS_protocol/pdsSaveConfigRequestClass.h \
-    PDS_protocol/pdsSaveConfigResponseClass.h \
-    PDS_protocol/pdsResetConfigRequestClass.h \
-    PDS_protocol/pdsResetConfigResponseClass.h \
-    PDS_protocol/pdsSaveExtrinsicsRequestClass.h \
-    PDS_protocol/pdsSaveExtrinsicsResponseClass.h
 
 
 

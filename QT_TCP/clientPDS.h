@@ -29,7 +29,7 @@ public:
     void pds_get_rack_response_command(QByteArray array);
     void pds_vol_check_response_command(QByteArray array);
     void pds_get_config_response_command(QByteArray array);
-
+    void pds_set_config_response_command(QByteArray array);
 
 private slots:
     void on_pushButtonConnect_clicked();

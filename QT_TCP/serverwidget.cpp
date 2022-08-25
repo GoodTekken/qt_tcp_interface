@@ -69,6 +69,7 @@ ServerWidget::ServerWidget(QWidget *parent) :
                                             break;
 
                                         case PDS_SET_CONFIG_COMMAND:
+                                            pds_set_config_command(array);
                                             break;
 
                                         case PDS_SAVE_CONFIG_COMMAND:
@@ -348,5 +349,19 @@ void ServerWidget::pds_save_extrinsics_command(QByteArray array)
 
 
 
+}
+
+void ServerWidget::pds_set_config_command(QByteArray array)
+{
+    pdsSetConfigRequestClass pdsSetConfigRequest(array);
+    QString str= "commandID:"+QString::number(pdsSetConfigRequest.setConfigRequestStruct.commandID) + "\r\n"+
+                " argsLen:"+QString::number(pdsSetConfigRequest.setConfigRequestStruct.argsLen)+ "\r\n"+
+                 " ";
+    qDebug("%s",qPrintable(str));
+
+    pdsSetConfigResponseClass pdsSetConfigResponse;
+    QByteArray sendArray;
+    sendArray = pdsSetConfigResponse.ToArray();
+    tcpSocket->write(sendArray);
 }
 
